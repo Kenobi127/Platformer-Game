@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://m0hr5xc5ra3k"]
+[gd_scene load_steps=2 format=3 uid="uid://m0hr5xc5ra3k"]
 
 [ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_emn7n"]
-[ext_resource type="AudioStream" uid="uid://c812gqov4e1r8" path="res://assets/sounds/player/player_hurt.mp3" id="2_dus5e"]
-[ext_resource type="AudioStream" uid="uid://bpytbyox4lhnb" path="res://assets/sounds/player/player_jump.wav" id="3_duyif"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -30,9 +28,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -55.5
-offset_top = -12.0
+offset_top = -40.0
 offset_right = 55.5
-offset_bottom = 12.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -43,10 +41,24 @@ layout_mode = 2
 layout_mode = 2
 text = "FullScreen"
 
+[node name="Borderless" type="Label" parent="Video/Video/Labels"]
+layout_mode = 2
+text = "Borderless"
+
+[node name="VSync" type="Label" parent="Video/Video/Labels"]
+layout_mode = 2
+text = "VSync"
+
 [node name="Checks" type="VBoxContainer" parent="Video/Video"]
 layout_mode = 2
 
 [node name="Fullscreen" type="CheckBox" parent="Video/Video/Checks"]
+layout_mode = 2
+
+[node name="Borderless" type="CheckBox" parent="Video/Video/Checks"]
+layout_mode = 2
+
+[node name="VSync" type="CheckBox" parent="Video/Video/Checks"]
 layout_mode = 2
 
 [node name="BackButtonContainer" type="MarginContainer" parent="Video"]
@@ -69,6 +81,7 @@ theme_override_font_sizes/font_size = 8
 text = "Back"
 
 [node name="Audio" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,18 +127,12 @@ size_flags_horizontal = 3
 
 [node name="Master" type="HSlider" parent="Audio/Audio/Sliders"]
 layout_mode = 2
-max_value = 50.0
-value = 25.0
 
 [node name="Music" type="HSlider" parent="Audio/Audio/Sliders"]
 layout_mode = 2
-max_value = 50.0
-value = 25.0
 
 [node name="sound fx" type="HSlider" parent="Audio/Audio/Sliders"]
 layout_mode = 2
-max_value = 50.0
-value = 25.0
 
 [node name="BackButtonContainer" type="MarginContainer" parent="Audio"]
 layout_mode = 1
@@ -146,31 +153,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Back"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Audio"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -19.5
-offset_top = -40.0
-offset_right = 19.5
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="TestMusicButton" type="Button" parent="Audio/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Test Music"
-
-[node name="TestSFXButton" type="Button" parent="Audio/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Test SFX"
-
 [node name="Options" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -232,28 +215,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Back"
 
-[node name="AudioManager" type="Node2D" parent="."]
-
-[node name="Music" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("2_dus5e")
-bus = &"Music"
-
-[node name="SFX" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("3_duyif")
-bus = &"sfx"
-
-[connection signal="pressed" from="Video/Video/Checks/Fullscreen" to="." method="_on_fullscreen_pressed"]
-[connection signal="toggled" from="Video/Video/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="Video/BackButtonContainer/BackToOptionVideo" to="." method="_on_back_to_option_video_pressed"]
 [connection signal="pressed" from="Video/BackButtonContainer/BackToOptionVideo" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="Audio/Audio/Sliders/Music" to="." method="_on_music_value_changed"]
-[connection signal="value_changed" from="Audio/Audio/Sliders/sound fx" to="." method="_on_sound_fx_value_changed"]
 [connection signal="pressed" from="Audio/BackButtonContainer/BackToOptionAudio" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Audio/BackButtonContainer/BackToOptionAudio" to="." method="_on_back_to_option_audio_pressed"]
-[connection signal="pressed" from="Audio/VBoxContainer/TestMusicButton" to="." method="_on_test_music_button_pressed"]
-[connection signal="pressed" from="Audio/VBoxContainer/TestMusicButton" to="." method="_on_test_button_pressed"]
-[connection signal="pressed" from="Audio/VBoxContainer/TestSFXButton" to="." method="_on_test_sfx_button_pressed"]
-[connection signal="pressed" from="Audio/VBoxContainer/TestSFXButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="Options/MarginContainer2/Options/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Options/MarginContainer2/Options/Audio" to="." method="_on_volume_pressed"]
 [connection signal="pressed" from="Options/MarginContainer2/Options/Video" to="." method="_on_volume_pressed"]
