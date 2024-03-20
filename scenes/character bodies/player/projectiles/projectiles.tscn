@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxjaew3pfof3e"]
+
+[ext_resource type="Script" path="res://scripts/player/projectiles.gd" id="1_ww7uw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtfdo"]
+radius = 1.0
+height = 7.99999
+
+[sub_resource type="Gradient" id="Gradient_81grg"]
+offsets = PackedFloat32Array(0, 0.75, 1)
+colors = PackedColorArray(0.21912, 0.304187, 0.238065, 1, 0.497579, 0.396253, 0.272106, 1, 0.6494, 0.328047, 0.0357024, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q2r5u"]
+gradient = SubResource("Gradient_81grg")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6a3h"]
+radius = 1.0
+height = 2.0
+
+[node name="Projectiles" type="RigidBody2D"]
+collision_mask = 7
+script = ExtResource("1_ww7uw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.27374e-13, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_qtfdo")
+debug_color = Color(0.443137, 0.486275, 0.901961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.49012e-08, -2.98023e-08)
+scale = Vector2(0.012, 1)
+texture = SubResource("GradientTexture1D_q2r5u")
+
+[node name="CollisionChecker" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionChecker"]
+shape = SubResource("CapsuleShape2D_f6a3h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="area_entered" from="CollisionChecker" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="CollisionChecker" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
