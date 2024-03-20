@@ -135,11 +135,46 @@ func attack():
 	anim.play("attack1")
 	look_at_mouse()
 
+# TODO: set up attack animation, add ranged attack in state machine
+func ranged_attack():
+	print("ranged atk")
+	cur_state = states.ATTACK1
+	anim.play("attack_weapon_down")
+	# spawn projectile
+	var proj = load("res://scenes/character bodies/player/projectiles/projectiles.tscn").instantiate()
+	# Calculate projectile direction
+	# handle mouse
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		look_at_mouse()
+		proj.direction = (get_global_mouse_position() - position).normalized()
+	# handle gamepad joystick
+	elif Input.get_action_strength("aim_up") - Input.get_action_strength("aim_down") + Input.get_action_strength("aim_left") - Input.get_action_strength("aim_right") != 0:
+		var up_down = Input.get_axis("aim_up", "aim_down")
+		look_at_aim_stick()
+		print(up_down)
+		# magic numbers
+		proj.direction = Vector2(get_sprite_direction() * 10, 150 * up_down - 10).normalized()
+	# handle all else (keyboard)
+	else :
+		# reasonable default
+		# TODO: shoot higher when up is pressed
+		proj.direction = Vector2(get_sprite_direction() * 10, -10).normalized()
+	get_parent().add_child(proj)
+	proj.position = position + Vector2(get_sprite_direction() * 10, -13)
+	print(proj.position)
+
 func look_at_mouse():
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x<position.x:
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)) && get_global_mouse_position().x<position.x:
 		sprite.flip_h = true
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x>position.x:
+	elif (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT))  && get_global_mouse_position().x>position.x:
 		sprite.flip_h = false
+
+func look_at_aim_stick():
+	var left_right = Input.get_axis("aim_left", "aim_right")
+	print(left_right)
+	sprite.flip_h = left_right < 0
+
+
 
 
 #State functions *****************************************************************
@@ -157,6 +192,8 @@ func idle_function(delta) -> void:
 		jump()
 	elif Input.is_action_just_pressed("attack"):				#attack1
 		attack()
+	elif Input.is_action_just_pressed("range_attack"):	
+		ranged_attack()
 	else:
 		stop()
 		anim.play("idle")
@@ -176,6 +213,8 @@ func running_function(delta) -> void:
 		jump()
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
+	elif Input.is_action_just_pressed("range_attack"):	
+		ranged_attack()
 	elif can_move: 									#logic for movement
 		move()
 		anim.play("run")
@@ -195,6 +234,8 @@ func crouching_function(delta) -> void:
 		jump()
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
+	elif Input.is_action_just_pressed("range_attack"):	
+		ranged_attack()
 	else:
 		stop()
 		anim.play("crouch_idle")
@@ -214,6 +255,8 @@ func crouch_walking_function(delta) -> void:
 		jump()
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
+	elif Input.is_action_just_pressed("range_attack"):	
+		ranged_attack()
 	elif can_move: 									#logic for movement
 		move()
 		anim.play("crouch_walk")
