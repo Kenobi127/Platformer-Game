@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://j6b1e4kmftwp"]
+
+[ext_resource type="Script" path="res://scenes/character bodies/enemies/staticspike/staticspike.gd" id="1_svu8r"]
+[ext_resource type="Texture2D" uid="uid://dfb1db1ikixm6" path="res://assets/textures/levels/tileset1.png" id="1_ws81v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8iuj"]
+size = Vector2(20, 4)
+
+[node name="StaticSpike" type="Area2D"]
+collision_layer = 5
+collision_mask = 2
+script = ExtResource("1_svu8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_ws81v")
+region_enabled = true
+region_rect = Rect2(176, 128, 16, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, -16)
+build_mode = 1
+polygon = PackedVector2Array(-9, 16, -6, 5, -3, 14, -1, 1, 3, 11, 5, 7, 7, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_m8iuj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
