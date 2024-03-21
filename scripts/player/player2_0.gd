@@ -239,14 +239,24 @@ func crouch_walking_function(delta) -> void:
 #need finish
 func slide_function(delta) -> void:
 	if anim.current_animation=="slide":										#slide logic
+		set_collision_layer_value(2, false)
+		set_collision_mask_value(3, false)
 		velocity.x = max_slide_speed*get_sprite_direction()
 	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
 		cur_state = states.RUNNING
 	elif horizontal_direction==0 && Input.is_action_pressed("crouch"):		#crouch
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
 		cur_state = states.CROUCHING
 	elif horizontal_direction!=0 && Input.is_action_pressed("crouch"):		#crouch walk
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
 		cur_state = states.CROUCH_WALK
 	else:																	#idle
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
 		cur_state = states.IDLE
 
 

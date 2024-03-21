@@ -90,6 +90,12 @@ slide={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="background"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
