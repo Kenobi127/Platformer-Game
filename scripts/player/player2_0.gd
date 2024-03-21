@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var cshape: CollisionShape2D = $CollisionShape2D
 @onready var standing_cshape = preload("res://assets/collision shapes/player/StandingCollisionShape.tres")
 @onready var crouching_cshape = preload("res://assets/collision shapes/player/CrouchCollisionShape.tres")
+@onready var sliding_cshape = preload("res://assets/collision shapes/player/SlidingCollisionShape.tres")
 var pixel_scale: float = 0.55 #fix the scaling, somehow the pixels are not exacly by 0.5 
 
 @export var max_lives: int = 5
@@ -22,6 +23,7 @@ var speed_to_peak: float = 17*pixel_scale
 var speed_to_stop: float = 20*pixel_scale
 
 
+var is_flipped: bool = false
 var horizontal_direction: float = 0
 var jump_num: int = max_jump_num
 var cur_lives: int = max_lives
@@ -77,22 +79,22 @@ var state_names = {
 
 func _ready():
 	jump_particles.scale_amount_max = 0;
-	jump_particles.emitting = true;
+	jump_particles.emitting = true;			#preload the particles
+
 
 func _process(delta):
-	#print(state_names[cur_state], " ", debug, " ")
+	#print(state_names[cur_state], " ", debug)
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
 		position = initial_position
-	
+
 
 func _physics_process(delta):
 	state_functions[cur_state].call(delta)
 	if !is_on_floor() && !is_jumping:				#falling logic universal
 		cur_state = states.FALL
 	move_and_slide()
-	
-	
+
 
 func get_gravity() -> float:
 	if velocity.y<0:
@@ -100,22 +102,32 @@ func get_gravity() -> float:
 	else:
 		return fall_gravity
 
+
 func move() -> void:
 	if cur_state==states.CROUCH_WALK:
 		velocity.x = move_toward(velocity.x, max_crouch_walk_speed*horizontal_direction, speed_to_peak)
 	else:
 		velocity.x = move_toward(velocity.x, max_speed.x*horizontal_direction, speed_to_peak)
 	
-	sprite.flip_h = (horizontal_direction < 0)
+	#move this in or out of the else to make flipping on crouchwalk or not
+	if horizontal_direction<0 && !is_flipped: 	#if direction - and looking +
+		is_flipped = true
+		scale.x *= -1
+	elif horizontal_direction>0 && is_flipped: 	#if direction + and looking -
+		is_flipped = false
+		scale.x *= -1
+
 
 func stop() -> void:
 	velocity.x = move_toward(velocity.x, 0.0, speed_to_stop)
 
+
 func get_sprite_direction() -> int:
-	if sprite.flip_h:	#if right returns 1
-		return -1
-	else:
+	if !is_flipped:	#if right returns 1
 		return 1
+	else:
+		return -1
+
 
 func jump():
 	is_jumping = true
@@ -123,23 +135,28 @@ func jump():
 	cur_state = states.JUMP
 	if jump_num == max_jump_num:	# Single jump
 		anim.play("jump")
+		jump_particles.scale_amount_max = 1;	#jumping particles
+		jump_particles.emitting = true;
 	else:							# Double jump
-		anim.play("roll")
-	# get jump direction
-	jump_particles.scale_amount_max = 1;
-	jump_particles.emitting = true;
+		anim.play("roll") #flip animation 
+	
 	jump_num -= 1
+
 
 func attack():
 	cur_state = states.ATTACK1
 	anim.play("attack1")
 	look_at_mouse()
 
+
 func look_at_mouse():
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x<position.x:
-		sprite.flip_h = true
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x>position.x:
-		sprite.flip_h = false
+	pass
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x<position.x && !is_flipped:
+		is_flipped = true
+		scale.x *= -1
+	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && get_global_mouse_position().x>position.x && is_flipped:
+		is_flipped = false
+		scale.x *= -1
 
 
 #State functions *****************************************************************
@@ -167,7 +184,7 @@ func running_function(delta) -> void:
 	#go to idle
 	if horizontal_direction==0:						#idle
 		cur_state = states.IDLE
-	elif Input.is_action_just_pressed("crouch"):	#crouch_walk
+	elif Input.is_action_pressed("crouch"):	#crouch_walk
 		cur_state = states.CROUCH_WALK
 	elif Input.is_action_just_pressed("slide"):		#slide
 		cur_state = states.SLIDE
@@ -217,17 +234,21 @@ func crouch_walking_function(delta) -> void:
 	elif can_move: 									#logic for movement
 		move()
 		anim.play("crouch_walk")
-	
-
 
 
 #need finish
 func slide_function(delta) -> void:
-	if !anim.current_animation=="slide":
-		cur_state = states.IDLE
-	else:
+	if anim.current_animation=="slide":										#slide logic
 		velocity.x = max_slide_speed*get_sprite_direction()
-		
+	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
+		cur_state = states.RUNNING
+	elif horizontal_direction==0 && Input.is_action_pressed("crouch"):		#crouch
+		cur_state = states.CROUCHING
+	elif horizontal_direction!=0 && Input.is_action_pressed("crouch"):		#crouch walk
+		cur_state = states.CROUCH_WALK
+	else:																	#idle
+		cur_state = states.IDLE
+
 
 
 
@@ -301,11 +322,14 @@ func fall_function(delta) -> void:
 		attack()
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#double jump
 		jump()
-	elif !is_on_floor():											#falling logic
+	elif !is_on_floor():										#falling logic
 		if horizontal_direction!=0:
 			move()
 		else:
 			stop()
+		
+		if jump_num == max_jump_num: #this means went airborn without jumping
+			jump_num = max_jump_num-1
 		
 		velocity.y += get_gravity() * delta
 		if velocity.y>max_speed.y:
