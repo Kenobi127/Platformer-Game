@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hogjs4gd025"]
+
+[ext_resource type="Script" path="res://scenes/other/movingplatform/MovingPlatform.gd" id="1_6v1wg"]
+[ext_resource type="Texture2D" uid="uid://cysnrdpmkbnlm" path="res://assets/textures/levels/platform.png" id="2_uh814"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcg01"]
+radius = 23.9948
+height = 95.9988
+
+[sub_resource type="Animation" id="Animation_bpbiv"]
+resource_name = "move_plat"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_igfac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rfcha"]
+resource_name = "move_loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_352ya"]
+_data = {
+"RESET": SubResource("Animation_igfac"),
+"move_loop": SubResource("Animation_rfcha"),
+"move_plat": SubResource("Animation_bpbiv")
+}
+
+[node name="MovingPlatform" type="Path2D"]
+script = ExtResource("1_6v1wg")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("2_uh814")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rcg01")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+progress = 51.6385
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_352ya")
+}
