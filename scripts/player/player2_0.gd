@@ -83,7 +83,7 @@ func _ready():
 
 
 func _process(delta):
-	#print(state_names[cur_state], " ", debug)
+	print(state_names[cur_state], " ", debug, " ", is_on_floor(), " ", anim.current_animation)
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
 		position = initial_position
@@ -307,14 +307,17 @@ func attack3_function(delta) -> void:
 
 #need finish
 func jump_function(delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):					#attack
+	if Input.is_action_just_pressed("attack"):						#attack
 		is_jumping = false
 		attack()
 	elif Input.is_action_just_pressed("jump") && jump_num > 0:		#double jump
 		jump()
-	elif velocity.y > 0:  										#fall
+	elif velocity.y > 0:  											#fall
 		is_jumping = false
-	else:														#movement
+	elif velocity.y==0:												#roll to fall
+		cur_state = states.FALL
+		is_jumping = false
+	else:															#movement
 		if horizontal_direction!=0:
 			move()
 		else:

@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://j6b1e4kmftwp"]
 
-[ext_resource type="Script" path="res://scenes/character bodies/enemies/staticspike/staticspike.gd" id="1_svu8r"]
+[ext_resource type="Script" path="res://scripts/staticspike.gd" id="1_60f0h"]
 [ext_resource type="Texture2D" uid="uid://dfb1db1ikixm6" path="res://assets/textures/levels/tileset1.png" id="1_ws81v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8iuj"]
 size = Vector2(20, 4)
 
 [node name="StaticSpike" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 5
 collision_mask = 2
-script = ExtResource("1_svu8r")
+script = ExtResource("1_60f0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
