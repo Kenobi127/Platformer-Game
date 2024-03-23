@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsanxw6on4r32"
-path="res://.godot/imported/skeleton_hurt_new.png-71c82d0f10c404e7a514da7f369eba51.ctex"
+uid="uid://cysnrdpmkbnlm"
+path="res://.godot/imported/platform.png-6d444c5522ce3caf4751645236798c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/skeleton1.0/skeleton_hurt_new.png"
-dest_files=["res://.godot/imported/skeleton_hurt_new.png-71c82d0f10c404e7a514da7f369eba51.ctex"]
+source_file="res://assets/textures/levels/platform.png"
+dest_files=["res://.godot/imported/platform.png-6d444c5522ce3caf4751645236798c0a.ctex"]
 
 [params]
 
