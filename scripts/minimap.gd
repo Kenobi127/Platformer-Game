@@ -9,10 +9,10 @@ func _ready():
 	for node in get_tree().get_root().get_child(0).get_children(): 
 		#print(node)
 		#print(node.name)
-		if node is Player:							#read the player node
+		if node.name == "Player":							#read the player node
 			player = node
 		
-		if node is TileMap:							#read the tilemap
+		if node.name == "TileMap":							#read the tilemap
 			var tile_dup = node.duplicate()
 			sub_viewport.add_child(tile_dup)
 		
