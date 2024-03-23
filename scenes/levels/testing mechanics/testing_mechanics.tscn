@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_4vhrx"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="3_b2hi8"]
 [ext_resource type="Texture2D" uid="uid://d1n4druoaeqqs" path="res://assets/textures/levels/measuring_background.png" id="6_0kpdo"]
-[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1.0.tscn" id="6_ilfpw"]
-[ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/other/movingplatform/MovingPlatform.tscn" id="7_u0kyo"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="6_ilfpw"]
+[ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/other/moving platforms/Moving Platform1.tscn" id="7_u0kyo"]
 [ext_resource type="PackedScene" uid="uid://j6b1e4kmftwp" path="res://scenes/character bodies/enemies/staticspike.tscn" id="8_uqcxf"]
 
 [sub_resource type="Curve2D" id="Curve2D_3d1iv"]
