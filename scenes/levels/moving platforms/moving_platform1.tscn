@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c5hogjs4gd025"]
 
-[ext_resource type="Script" path="res://scripts/MovingPlatform.gd" id="1_rkibp"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_rkibp"]
 [ext_resource type="Texture2D" uid="uid://cysnrdpmkbnlm" path="res://assets/textures/levels/platform.png" id="2_uh814"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcg01"]

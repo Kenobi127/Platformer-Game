@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://lehvkjwy63ww"]
 
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_0pae5"]
-[ext_resource type="Script" path="res://scenes/backgrounds/paralax_background/SkyBackground.gd" id="2_i0v3n"]
+[ext_resource type="Script" path="res://scripts/paralax_clouds.gd" id="2_i0v3n"]
 [ext_resource type="Texture2D" uid="uid://b46y3f5j5fnpr" path="res://assets/textures/backgrounds/CloudsBack.png" id="3_274kg"]
 [ext_resource type="Texture2D" uid="uid://cj1mxx0pfvglc" path="res://assets/textures/backgrounds/CloudsFront.png" id="4_ihk7t"]
-[ext_resource type="Texture2D" uid="uid://b7804edsrbcqo" path="res://assets/textures/tilesets/tileset.png" id="5_3njpf"]
+[ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="5_3njpf"]
 [ext_resource type="Texture2D" uid="uid://dfb1db1ikixm6" path="res://assets/textures/levels/tileset1.png" id="5_mf7ct"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="6_72sbg"]
 

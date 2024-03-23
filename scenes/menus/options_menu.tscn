@@ -4,10 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://bpytbyox4lhnb" path="res://assets/sounds/player/player_jump.wav" id="2_1xces"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_krbyg"]
 [ext_resource type="AudioStream" uid="uid://c812gqov4e1r8" path="res://assets/sounds/player/player_hurt.mp3" id="3_xtfk4"]
-[ext_resource type="Script" path="res://scenes/backgrounds/paralax_background/SkyBackground.gd" id="4_xbawu"]
+[ext_resource type="Script" path="res://scripts/paralax_clouds.gd" id="4_xbawu"]
 [ext_resource type="Texture2D" uid="uid://b46y3f5j5fnpr" path="res://assets/textures/backgrounds/CloudsBack.png" id="5_cd3ce"]
 [ext_resource type="Texture2D" uid="uid://cj1mxx0pfvglc" path="res://assets/textures/backgrounds/CloudsFront.png" id="6_cnbh6"]
-[ext_resource type="Texture2D" uid="uid://b7804edsrbcqo" path="res://assets/textures/tilesets/tileset.png" id="7_ocwye"]
+[ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="7_ocwye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2knn"]
 texture = ExtResource("7_ocwye")
@@ -251,8 +251,8 @@ layout_mode = 2
 max_value = 20.0
 value = 20.0
 
-[connection signal="pressed" from="Main/HBoxContainer/Main_Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Main/HBoxContainer/Main_Back" to="." method="_on_main_back_pressed"]
+[connection signal="pressed" from="Main/HBoxContainer/Main_Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Main/MarginContainerVideo/VideoBox/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="value_changed" from="Main/Sliders/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="Main/Sliders/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

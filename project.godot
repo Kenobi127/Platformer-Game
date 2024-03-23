@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/icon/icon.png"
 config/windows_native_icon="res://assets/icon/windows icon.ico"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [display]
 
 window/size/viewport_width=320

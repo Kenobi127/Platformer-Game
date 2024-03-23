@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bmcy4j0plfs8j"]
 
-[ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/default_tileset.png" id="1_ryewc"]
+[ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="1_xljhx"]
 [ext_resource type="Texture2D" uid="uid://dfb1db1ikixm6" path="res://assets/textures/levels/tileset1.png" id="2_mlk6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eco72"]
-texture = ExtResource("1_ryewc")
+texture = ExtResource("1_xljhx")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cw1dm3jv5cq12"]
 
-[ext_resource type="TileSet" uid="uid://bmcy4j0plfs8j" path="res://assets/textures/levels/default_tileset.tres" id="1_bu8vk"]
+[ext_resource type="TileSet" uid="uid://bmcy4j0plfs8j" path="res://assets/textures/levels/default_tileset.tres" id="1_l0ijb"]
 
 [node name="TileMap" type="TileMap"]
-tile_set = ExtResource("1_bu8vk")
+tile_set = ExtResource("1_l0ijb")
 format = 2
 layer_0/name = "BDecorations"
 layer_0/z_index = -1

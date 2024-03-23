@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjqvmxsqpukj4"]
 
-[ext_resource type="Texture2D" uid="uid://b7804edsrbcqo" path="res://assets/textures/tilesets/tileset.png" id="1_ouqap"]
+[ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="1_ouqap"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_2hpso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmn4u"]
@@ -69,6 +69,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -82,9 +83,9 @@ layer_0/tile_data = PackedInt32Array(65537, 0, 0, 65538, 65536, 0, 65539, 65536,
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.477778
+anchor_top = 0.525974
 anchor_right = 0.5
-anchor_bottom = 0.477778
+anchor_bottom = 0.525974
 offset_left = -51.0
 offset_top = -62.0
 offset_right = 58.0
@@ -100,9 +101,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.477778
+anchor_top = 0.522727
 anchor_right = 0.5
-anchor_bottom = 0.477778
+anchor_bottom = 0.522727
 offset_left = -126.0
 offset_top = -54.5
 offset_right = 126.0
@@ -115,10 +116,10 @@ theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[center]
 Mateo Lopez Moncaleano
-Whit Barrett
+Jaelin Mckethan
+Kiriti Vundavilli
 Natalie Mertz
 Brent Yelle
 Joseph Mego
-Angel Vazquez
-Ian Hurd"
+Angel Vazquez"
 metadata/_edit_use_anchors_ = true
