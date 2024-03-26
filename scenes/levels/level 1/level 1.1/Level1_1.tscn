@@ -50,4 +50,4 @@ texture = ExtResource("10_i4ml0")
 [node name="MovingPlatform" parent="Moving Platforms" instance=ExtResource("5_aljdx")]
 position = Vector2(3027, 71)
 curve = SubResource("Curve2D_6tnwg")
-speed_scale = 0.3
+speed_scale = 0.4
