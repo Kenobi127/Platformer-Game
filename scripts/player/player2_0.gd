@@ -341,8 +341,8 @@ func fall_function(delta) -> void:
 		else:
 			stop()
 		
-		if jump_num == max_jump_num: #this means went airborn without jumping
-			jump_num = max_jump_num-1
+		#if jump_num == max_jump_num: #this means went airborn without jumping
+		#	jump_num = max_jump_num-1
 		
 		velocity.y += get_gravity() * delta
 		if velocity.y>max_speed.y:
