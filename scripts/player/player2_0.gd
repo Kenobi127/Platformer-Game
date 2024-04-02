@@ -16,11 +16,11 @@ var pixel_scale: float = 0.55 #fix the scaling, somehow the pixels are not exacl
 @export var initial_position: Vector2 = Vector2(155,128)
 
 
-var max_speed: Vector2 = Vector2(250, 600)*pixel_scale
+var max_fall_speed: float = 600*pixel_scale
+var max_run_speed: float = 250*pixel_scale
 var max_crouch_walk_speed: float = 100*pixel_scale
 var max_slide_speed: float = 250*pixel_scale
-var speed_to_peak: float = 17*pixel_scale
-var speed_to_stop: float = 20*pixel_scale
+var x_acceleration: float = 17*pixel_scale
 
 
 var is_flipped: bool = false
@@ -83,7 +83,7 @@ func _ready():
 
 
 func _process(delta):
-	print(state_names[cur_state], " ", debug, " ", is_on_floor(), " ", anim.current_animation)
+	print(state_names[cur_state], " ", debug, " ", velocity.x)
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
 		position = initial_position
@@ -92,6 +92,7 @@ func _process(delta):
 func _physics_process(delta):
 	state_functions[cur_state].call(delta)
 	if !is_on_floor() && !is_jumping:				#falling logic universal
+		can_move = true
 		cur_state = states.FALL
 	move_and_slide()
 
@@ -102,24 +103,24 @@ func get_gravity() -> float:
 	else:
 		return fall_gravity
 
+func handle_movement(delta) -> void:
+	if can_move:
+		if cur_state == states.CROUCH_WALK:
+			velocity.x = move_toward(velocity.x, max_crouch_walk_speed * horizontal_direction, x_acceleration)
+		else:
+			velocity.x = move_toward(velocity.x, max_run_speed * horizontal_direction, x_acceleration)
 
-func move() -> void:
-	if cur_state==states.CROUCH_WALK:
-		velocity.x = move_toward(velocity.x, max_crouch_walk_speed*horizontal_direction, speed_to_peak)
+		if horizontal_direction != 0:
+			if horizontal_direction < 0 && !is_flipped:    # Flip logic
+				is_flipped = true
+				scale.x *= -1
+			elif horizontal_direction > 0 && is_flipped:
+				is_flipped = false
+				scale.x *= -1
 	else:
-		velocity.x = move_toward(velocity.x, max_speed.x*horizontal_direction, speed_to_peak)
-	
-	#move this in or out of the else to make flipping on crouchwalk or not
-	if horizontal_direction<0 && !is_flipped: 	#if direction - and looking +
-		is_flipped = true
-		scale.x *= -1
-	elif horizontal_direction>0 && is_flipped: 	#if direction + and looking -
-		is_flipped = false
-		scale.x *= -1
+		velocity.x = move_toward(velocity.x, 0.0, x_acceleration)
 
 
-func stop() -> void:
-	velocity.x = move_toward(velocity.x, 0.0, speed_to_stop)
 
 
 func get_sprite_direction() -> int:
@@ -144,6 +145,7 @@ func jump():
 
 
 func attack():
+	can_move = false
 	cur_state = states.ATTACK1
 	anim.play("attack1")
 	look_at_mouse()
@@ -175,7 +177,7 @@ func idle_function(delta) -> void:
 	elif Input.is_action_just_pressed("attack"):				#attack1
 		attack()
 	else:
-		stop()
+		handle_movement(delta)
 		anim.play("idle")
 	
 
@@ -194,7 +196,7 @@ func running_function(delta) -> void:
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
 	elif can_move: 									#logic for movement
-		move()
+		handle_movement(delta)
 		anim.play("run")
 	
 
@@ -213,7 +215,7 @@ func crouching_function(delta) -> void:
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
 	else:
-		stop()
+		handle_movement(delta)
 		anim.play("crouch_idle")
 
 
@@ -232,7 +234,7 @@ func crouch_walking_function(delta) -> void:
 	elif Input.is_action_just_pressed("attack"):	#attack1
 		attack()
 	elif can_move: 									#logic for movement
-		move()
+		handle_movement(delta)
 		anim.play("crouch_walk")
 
 
@@ -268,9 +270,10 @@ func attack1_function(delta) -> void:
 		is_attack_combo = false
 		anim.play("attack2")
 	elif !anim.current_animation=="attack1" && !is_attack_combo: #to idle
+		can_move = true
 		cur_state = states.IDLE
 	else:
-		stop()
+		handle_movement(delta)
 		anim.play("attack1")
 		
 		if Input.is_action_just_pressed("attack"): #bool to attack 2
@@ -285,9 +288,10 @@ func attack2_function(delta) -> void:
 		is_attack_combo = false
 		anim.play("attack3")
 	elif !anim.current_animation=="attack2" && !is_attack_combo: #to idle
+		can_move = true
 		cur_state = states.IDLE
 	else:
-		stop()
+		handle_movement(delta)
 		anim.play("attack2")
 		
 		if Input.is_action_just_pressed("attack"): #bool to attack 2
@@ -298,9 +302,10 @@ func attack2_function(delta) -> void:
 
 func attack3_function(delta) -> void:
 	if !anim.current_animation=="attack3": #to idle
+		can_move = true
 		cur_state = states.IDLE
 	else:
-		stop()
+		handle_movement(delta)
 		anim.play("attack3")
 
 
@@ -318,10 +323,7 @@ func jump_function(delta: float) -> void:
 		cur_state = states.FALL
 		is_jumping = false
 	else:															#movement
-		if horizontal_direction!=0:
-			move()
-		else:
-			stop()
+		handle_movement(delta)
 		velocity.y += get_gravity() * delta
 
 
@@ -336,17 +338,14 @@ func fall_function(delta) -> void:
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#double jump
 		jump()
 	elif !is_on_floor():										#falling logic
-		if horizontal_direction!=0:
-			move()
-		else:
-			stop()
+		handle_movement(delta)
 		
 		#if jump_num == max_jump_num: #this means went airborn without jumping
 		#	jump_num = max_jump_num-1
 		
 		velocity.y += get_gravity() * delta
-		if velocity.y>max_speed.y:
-			velocity.y = max_speed.y
+		if velocity.y>max_fall_speed:
+			velocity.y = max_fall_speed
 		anim.play("falling")
 
 
