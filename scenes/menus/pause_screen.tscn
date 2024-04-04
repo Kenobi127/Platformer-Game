@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xf60vj33pcho"]
+
+[ext_resource type="PackedScene" uid="uid://lehvkjwy63ww" path="res://scenes/menus/pause_menu.tscn" id="1_f4wcl"]
+
+[node name="pause_screen" type="CanvasLayer"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_f4wcl")]
+offset_right = -1.0
+offset_bottom = 2.0

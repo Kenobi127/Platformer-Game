@@ -1,13 +1,17 @@
 extends Node2D
 
-@onready var pause_menu = $PauseMenu
+@onready var pause_screen = $pause_screen
+@onready var player = $Player
+@onready var tile_map = $TileMap
+@onready var moving_platform = $"Moving Platforms"
 var paused = false
 var timer_running = true
 var start_time = 0
 var elapsed_time = 0
 
 func _ready():
-	pause_menu.hide()
+	pause_screen.hide()
+	Engine.time_scale = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,12 +22,18 @@ func _process(delta):
 
 func pauseMenu():
 	if paused:
-		pause_menu.hide()
+		pause_screen.hide()
+		player.show()
+		tile_map.show()
+		moving_platform.show()
 		Engine.time_scale = 1
 		timer_running = true
 		print("Timer started.")
 	else:
-		pause_menu.show()
+		pause_screen.show()
+		player.hide()
+		tile_map.hide()
+		moving_platform.hide()
 		Engine.time_scale = 0
 		timer_running = false
 		print("Timer stopped.")
