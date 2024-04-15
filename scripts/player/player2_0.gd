@@ -17,7 +17,7 @@ var pixel_scale: float = 0.55 #fix the scaling, somehow the pixels are not exacl
 
 #debug *******************************************
 #get_tree().quit()
-var debug: String = "not set"
+var debug = "not set"
 var state_names = {
 	states.IDLE: "IDLE",
 	states.RUNNING: "RUNNING",
@@ -29,6 +29,7 @@ var state_names = {
 	states.ATTACK2: "ATTACK2",
 	states.ATTACK3: "ATTACK3",
 	states.FALL: "FALL",
+	states.HURT: "HURT"
 }
 #*************************************************
 
@@ -59,22 +60,23 @@ var fall_gravity : float = 2.0*jump_height / pow(jump_time_to_descent,2)
 
 #enum with the number of states
 enum states {IDLE, RUNNING, CROUCHING, CROUCH_WALK, SLIDE, 
-	JUMP, ATTACK1, ATTACK2, ATTACK3, FALL}
+	JUMP, ATTACK1, ATTACK2, ATTACK3, FALL, HURT}
 
 var cur_state: states = states.IDLE
 
 #dictionary with each state as the key and each function name as a value
 var state_functions: Dictionary = {
-	states.IDLE : idle_function,
-	states.RUNNING : running_function, 
-	states.CROUCHING : crouching_function,
-	states.CROUCH_WALK : crouch_walking_function,
-	states.SLIDE : slide_function,
-	states.JUMP : jump_function, 
-	states.ATTACK1 : attack1_function,
-	states.ATTACK2 : attack2_function,
-	states.ATTACK3 : attack3_function,
-	states.FALL : fall_function,
+	states.IDLE: idle_function,
+	states.RUNNING: running_function, 
+	states.CROUCHING: crouching_function,
+	states.CROUCH_WALK: crouch_walking_function,
+	states.SLIDE: slide_function,
+	states.JUMP: jump_function, 
+	states.ATTACK1: attack1_function,
+	states.ATTACK2: attack2_function,
+	states.ATTACK3: attack3_function,
+	states.FALL: fall_function,
+	states.HURT: hurt_function
 }
 
 
@@ -88,7 +90,7 @@ func _ready():
 
 
 func _process(delta):
-	print(state_names[cur_state], " ", debug, " ", velocity.x, " crouching: ", crouch_shapecast.is_colliding())
+	#print(state_names[cur_state], " ", debug, " ", velocity.x, " can move ", can_move, " ", jump_num, " ", is_jumping)
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
 		position = initial_position
@@ -186,6 +188,7 @@ func idle_function(delta) -> void:
 	elif Input.is_action_just_pressed("attack"):				#attack1
 		attack()
 	else:
+		jump_num = max_jump_num
 		handle_movement(delta)
 		anim.play("idle")
 	
@@ -356,10 +359,26 @@ func fall_function(delta) -> void:
 
 
 
-func hurt() -> void:
-	if anim.current_animation!="hurt" && !anim.current_animation!="death":
-		cur_lives -= 1
+func hurt_function(delta) -> void:
+	if anim.current_animation!="hurt" && anim.current_animation!="death":
+		can_move = true
+		cur_state = states.IDLE
+
+
+
+func respawn() -> void:
+	can_move = true
+	cur_state = states.IDLE
+	cur_lives = max_lives
+	position = initial_position
+	velocity = Vector2(0, 0)
+
+func hurt_player():
+	if anim.current_animation!="hurt" && anim.current_animation!="death":
 		can_move = false
+		velocity = Vector2(0, 0)
+		cur_state = states.HURT
+		cur_lives -= 1
 		if cur_lives < 1: 	#death
 			$Death.play()
 			anim.play("death") 
@@ -367,17 +386,7 @@ func hurt() -> void:
 			$Hurt.play()
 			anim.play("hurt")
 
-
-
-func respawn(delta) -> void:
-	can_move = true
-	cur_state = states.IDLE
-	cur_lives = max_lives
-	position = initial_position
-	velocity = Vector2(0, 0)
-
-
 func _on_skeleton_hurt_player():
-	hurt()
-	
+	hurt_player();
+
 
