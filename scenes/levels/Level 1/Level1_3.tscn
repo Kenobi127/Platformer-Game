@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvtvym8paoaa1"]
 
-[ext_resource type="PackedScene" uid="uid://lehvkjwy63ww" path="res://scenes/menus/pause_menu.tscn" id="1_2p2cb"]
+[ext_resource type="PackedScene" uid="uid://boad44k2ingsg" path="res://scenes/menus/pause_screen.tscn" id="1_2p2cb"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="2_wxyy1"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_wew0p"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="4_b5l6r"]
