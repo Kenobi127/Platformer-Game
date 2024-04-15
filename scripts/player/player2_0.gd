@@ -15,6 +15,24 @@ var pixel_scale: float = 0.55 #fix the scaling, somehow the pixels are not exacl
 @export var max_jump_num: int = 2
 @export var initial_position: Vector2 = Vector2(155,128)
 
+#debug *******************************************
+#get_tree().quit()
+var debug: String = "not set"
+var state_names = {
+	states.IDLE: "IDLE",
+	states.RUNNING: "RUNNING",
+	states.CROUCHING: "CROUCHING",
+	states.CROUCH_WALK: "CROUCH_WALK",
+	states.SLIDE: "SLIDE",
+	states.JUMP: "JUMP",
+	states.ATTACK1: "ATTACK1",
+	states.ATTACK2: "ATTACK2",
+	states.ATTACK3: "ATTACK3",
+	states.FALL: "FALL",
+	states.HURT: "HURT",
+	states.DEATH: "DEATH"
+}
+#*************************************************
 
 var max_fall_speed: float = 600*pixel_scale
 var max_run_speed: float = 250*pixel_scale
@@ -35,12 +53,19 @@ var jump_height : float = 70*pixel_scale
 var jump_time_to_peak : float = 0.4
 var jump_time_to_descent : float = 0.3
 
-var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-var jump_gravity : float = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1.0
-var fall_gravity : float = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1.0
+var jump_velocity : float = -2.0*jump_height / jump_time_to_peak
+
+var jump_gravity : float = 2.0*jump_height / pow(jump_time_to_peak,2)
+var fall_gravity : float = 2.0*jump_height / pow(jump_time_to_descent,2)
 
 
-enum states {IDLE, RUNNING, CROUCHING, CROUCH_WALK, SLIDE, JUMP, ATTACK1, ATTACK2, ATTACK3, FALL, HURT, DEATH}
+#enum with the number of states
+enum states {IDLE, RUNNING, CROUCHING, CROUCH_WALK, SLIDE, 
+	JUMP, ATTACK1, ATTACK2, ATTACK3, FALL, HURT, DEATH}
+
+var cur_state: states = states.IDLE
+
+#dictionary with each state as the key and each function name as a value
 var state_functions: Dictionary = {
 	states.IDLE : idle_function,
 	states.RUNNING : running_function, 
@@ -55,26 +80,10 @@ var state_functions: Dictionary = {
 	states.HURT : hurt_function,
 	states.DEATH : death_function
 }
-var cur_state = states.IDLE
 
-#debug *******************************************
-#get_tree().quit()
-var debug: String = "not set"
-var state_names = {
-	states.IDLE: "IDLE",
-	states.RUNNING: "RUNNING",
-	states.CROUCHING: "CROUCHING",
-	states.CROUCH_WALK: "CROUCH_WALK",
-	states.SLIDE: "SLIDE",
-	states.JUMP: "JUMP",
-	states.ATTACK1: "ATTACK1",
-	states.ATTACK2: "ATTACK2",
-	states.ATTACK3: "ATTACK3",
-	states.FALL: "FALL",
-	states.HURT: "HURT",
-	states.DEATH: "DEATH"
-}
-#*************************************************
+
+
+
 
 
 func _ready():
@@ -105,19 +114,22 @@ func get_gravity() -> float:
 
 func handle_movement(delta) -> void:
 	if can_move:
+		#crouch walk speed
 		if cur_state == states.CROUCH_WALK:
 			velocity.x = move_toward(velocity.x, max_crouch_walk_speed * horizontal_direction, x_acceleration)
+		#normal running speed
 		else:
 			velocity.x = move_toward(velocity.x, max_run_speed * horizontal_direction, x_acceleration)
-
+		#logic to flip the character
 		if horizontal_direction != 0:
-			if horizontal_direction < 0 && !is_flipped:    # Flip logic
+			if horizontal_direction < 0 && !is_flipped:
 				is_flipped = true
 				scale.x *= -1
 			elif horizontal_direction > 0 && is_flipped:
 				is_flipped = false
 				scale.x *= -1
 	else:
+		#stop
 		velocity.x = move_toward(velocity.x, 0.0, x_acceleration)
 
 
