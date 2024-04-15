@@ -1374,14 +1374,13 @@ libraries = {
 }
 
 [node name="CrouchShapeCast2D" type="ShapeCast2D" parent="."]
-visible = false
-position = Vector2(0, -10.7)
-shape = ExtResource("3_ruosv")
+position = Vector2(0, -15.2)
+shape = ExtResource("4_ces4e")
+exclude_parent = false
 target_position = Vector2(0, 0)
-max_results = 0
+max_results = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -15.2)
 shape = ExtResource("4_ces4e")
 

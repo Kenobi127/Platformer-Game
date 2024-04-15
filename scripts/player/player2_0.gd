@@ -29,8 +29,6 @@ var state_names = {
 	states.ATTACK2: "ATTACK2",
 	states.ATTACK3: "ATTACK3",
 	states.FALL: "FALL",
-	states.HURT: "HURT",
-	states.DEATH: "DEATH"
 }
 #*************************************************
 
@@ -61,7 +59,7 @@ var fall_gravity : float = 2.0*jump_height / pow(jump_time_to_descent,2)
 
 #enum with the number of states
 enum states {IDLE, RUNNING, CROUCHING, CROUCH_WALK, SLIDE, 
-	JUMP, ATTACK1, ATTACK2, ATTACK3, FALL, HURT, DEATH}
+	JUMP, ATTACK1, ATTACK2, ATTACK3, FALL}
 
 var cur_state: states = states.IDLE
 
@@ -77,8 +75,6 @@ var state_functions: Dictionary = {
 	states.ATTACK2 : attack2_function,
 	states.ATTACK3 : attack3_function,
 	states.FALL : fall_function,
-	states.HURT : hurt_function,
-	states.DEATH : death_function
 }
 
 
@@ -92,7 +88,7 @@ func _ready():
 
 
 func _process(delta):
-	print(state_names[cur_state], " ", debug, " ", velocity.x)
+	print(state_names[cur_state], " ", debug, " ", velocity.x, " crouching: ", crouch_shapecast.is_colliding())
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
 		position = initial_position
@@ -177,6 +173,7 @@ func look_at_mouse():
 #need finish
 func idle_function(delta) -> void: 
 	#go to conditions
+	can_move = true
 	if horizontal_direction!=0:									#running
 		cur_state = states.RUNNING
 	elif Input.is_action_just_pressed("slide"):					#sliding
@@ -210,21 +207,20 @@ func running_function(delta) -> void:
 	elif can_move: 									#logic for movement
 		handle_movement(delta)
 		anim.play("run")
-	
 
 
-#need finish
+
 func crouching_function(delta) -> void:
-	if Input.is_action_just_released("crouch"): 	#idle #logic to stand needed
+	if !Input.is_action_pressed("crouch") && !crouch_shapecast.is_colliding(): 	#idle
 		cur_state = states.IDLE
 	elif horizontal_direction!=0:					#crouch_walk
 		cur_state = states.CROUCH_WALK
 	elif Input.is_action_just_pressed("slide"):		#slide
 		cur_state = states.SLIDE
 		anim.play("slide")
-	elif Input.is_action_just_pressed("jump"):		#jump
+	elif Input.is_action_just_pressed("jump") && !crouch_shapecast.is_colliding():		#jump
 		jump()
-	elif Input.is_action_just_pressed("attack"):	#attack1
+	elif Input.is_action_just_pressed("attack") && !crouch_shapecast.is_colliding():	#attack1
 		attack()
 	else:
 		handle_movement(delta)
@@ -234,20 +230,21 @@ func crouching_function(delta) -> void:
 
 #need finish
 func crouch_walking_function(delta) -> void:
-	if Input.is_action_just_released("crouch"): 	#run #above head needs to be added
+	if !Input.is_action_pressed("crouch") && !crouch_shapecast.is_colliding(): 	#run #above head needs to be added
 		cur_state = states.RUNNING
 	elif horizontal_direction==0:					#crouch
 		cur_state = states.CROUCHING
 	elif Input.is_action_just_pressed("slide"):		#slide
 		cur_state = states.SLIDE
 		anim.play("slide")
-	elif Input.is_action_just_pressed("jump"):		#jump
+	elif Input.is_action_just_pressed("jump") && !crouch_shapecast.is_colliding():		#jump
 		jump()
-	elif Input.is_action_just_pressed("attack"):	#attack1
+	elif Input.is_action_just_pressed("attack") && !crouch_shapecast.is_colliding():	#attack1
 		attack()
 	elif can_move: 									#logic for movement
 		handle_movement(delta)
 		anim.play("crouch_walk")
+
 
 
 #need finish
@@ -256,11 +253,7 @@ func slide_function(delta) -> void:
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(3, false)
 		velocity.x = max_slide_speed*get_sprite_direction()
-	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
-		set_collision_layer_value(2, true)
-		set_collision_mask_value(3, true)
-		cur_state = states.RUNNING
-	elif horizontal_direction==0 && Input.is_action_pressed("crouch"):		#crouch
+	elif horizontal_direction==0 && Input.is_action_pressed("crouch") || crouch_shapecast.is_colliding():		#crouch
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
 		cur_state = states.CROUCHING
@@ -268,11 +261,14 @@ func slide_function(delta) -> void:
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
 		cur_state = states.CROUCH_WALK
+	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
+		cur_state = states.RUNNING
 	else:																	#idle
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
 		cur_state = states.IDLE
-
 
 
 
@@ -322,7 +318,6 @@ func attack3_function(delta) -> void:
 
 
 
-#need finish
 func jump_function(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):						#attack
 		is_jumping = false
@@ -340,7 +335,6 @@ func jump_function(delta: float) -> void:
 
 
 
-#need finish
 func fall_function(delta) -> void:
 	if is_on_floor():											#idle
 		cur_state = states.IDLE
@@ -362,17 +356,28 @@ func fall_function(delta) -> void:
 
 
 
-#need finish
-func hurt_function(delta) -> void:
-	if cur_lives<=0:
-		cur_state = states.DEATH
+func hurt() -> void:
+	if anim.current_animation!="hurt" && !anim.current_animation!="death":
+		cur_lives -= 1
+		can_move = false
+		if cur_lives < 1: 	#death
+			$Death.play()
+			anim.play("death") 
+		else:				#hurt
+			$Hurt.play()
+			anim.play("hurt")
 
 
 
-#need finish
-func death_function(delta) -> void:
-	pass
+func respawn(delta) -> void:
+	can_move = true
+	cur_state = states.IDLE
+	cur_lives = max_lives
+	position = initial_position
+	velocity = Vector2(0, 0)
 
 
-
+func _on_skeleton_hurt_player():
+	hurt()
+	
 
