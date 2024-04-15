@@ -1,5 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ut4hxqgw3iys"]
 
+[ext_resource type="Script" path="res://scripts/levels/tutorial_level.gd" id="1_4a05l"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_tfd4b"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_236wj"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_o7vye"]

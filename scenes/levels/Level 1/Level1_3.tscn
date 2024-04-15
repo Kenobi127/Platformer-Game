@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvtvym8paoaa1"]
+[gd_scene load_steps=6 format=3 uid="uid://bvtvym8paoaa1"]
 
 [ext_resource type="PackedScene" uid="uid://boad44k2ingsg" path="res://scenes/menus/pause_screen.tscn" id="1_2p2cb"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="2_wxyy1"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_wew0p"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="4_b5l6r"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="5_y2hh8"]
-[ext_resource type="Texture2D" uid="uid://d1n4druoaeqqs" path="res://assets/textures/levels/measuring_background.png" id="6_k6boi"]
 
 [node name="Level3" type="Node2D"]
 
@@ -30,8 +29,3 @@ transform = Transform2D(1, 0, 0, 1, 64, 40)
 
 [node name="Player" parent="." instance=ExtResource("5_y2hh8")]
 position = Vector2(164, 107)
-
-[node name="MeasuringBackground" type="Sprite2D" parent="."]
-position = Vector2(150, 72)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_k6boi")
