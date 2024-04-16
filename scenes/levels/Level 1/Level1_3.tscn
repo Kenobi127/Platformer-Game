@@ -6,15 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="4_b5l6r"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="5_y2hh8"]
 
-[node name="Level3" type="Node2D"]
+[node name="World" type="Node2D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_2p2cb")]
 visible = false
-offset_left = 157.0
-offset_top = 88.0
-offset_right = 157.0
-offset_bottom = 88.0
-pivot_offset = Vector2(-59, -58)
 
 [node name="TileMap" parent="." instance=ExtResource("2_wxyy1")]
 scale = Vector2(0.7, 0.7)

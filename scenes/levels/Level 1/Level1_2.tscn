@@ -1,8 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://da0qw3x5p23wl"]
 
-[ext_resource type="Script" path="res://scripts/Level1_2.gd" id="1_c5ssw"]
 [ext_resource type="PackedScene" uid="uid://boad44k2ingsg" path="res://scenes/menus/pause_screen.tscn" id="2_6qs7r"]
-[ext_resource type="PackedScene" uid="uid://lehvkjwy63ww" path="res://scenes/menus/pause_menu.tscn" id="2_6qs7r"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_s33yb"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_8e2yc"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_k1ume"]
@@ -63,7 +61,7 @@ _data = {
 }
 point_count = 4
 
-[node name="Level2" type="Node2D"]
+[node name="World" type="Node2D"]
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
@@ -115,11 +113,6 @@ speed_scale = 0.4
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_6qs7r")]
 visible = false
-offset_left = 157.0
-offset_top = 88.0
-offset_right = 157.0
-offset_bottom = 88.0
-pivot_offset = Vector2(-59, -58)
 
 [node name="TileMap" parent="." instance=ExtResource("3_s33yb")]
 scale = Vector2(0.7, 0.7)
