@@ -89,9 +89,9 @@ func hurt(amount):
 	is_hurt = true
 	velocity = Vector2(0,0)
 	if lives<1:
-		anim.play("hurt")
-	else:
 		anim.play("death")
+	else:
+		anim.play("hurt")
 
 func back_to_normal():
 	is_hurt = false

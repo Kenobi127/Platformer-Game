@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1vospw8ludpb"]
+[gd_scene load_steps=18 format=3 uid="uid://d1vospw8ludpb"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="1_hp6la"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="2_ov4sn"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="3_02460"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="4_qwrd8"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="6_iihwt"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="6_ppp0b"]
 
 [sub_resource type="Curve2D" id="Curve2D_gk8ql"]
 _data = {
@@ -157,3 +158,10 @@ position = Vector2(3581, 227)
 curve = SubResource("Curve2D_1kuxw")
 loop = false
 speed_scale = 0.5
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Skeleton" parent="Enemies" instance=ExtResource("6_ppp0b")]
+position = Vector2(232, 105)
+
+[connection signal="hurt_player" from="Enemies/Skeleton" to="Player" method="_on_skeleton_hurt_player"]
