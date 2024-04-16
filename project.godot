@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Platformer Game"
-run/main_scene="res://scenes/scene manager/scene_manager.tscn"
+config/name="Skylighter 2"
+run/main_scene="res://scenes/levels/testing mechanics/testing_mechanics.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/icon/icon.png"
 config/windows_native_icon="res://assets/icon/windows icon.ico"

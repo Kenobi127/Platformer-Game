@@ -322,10 +322,10 @@ func attack3_function(delta) -> void:
 
 
 func jump_function(delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):						#attack
-		is_jumping = false
-		attack()
-	elif Input.is_action_just_pressed("jump") && jump_num > 0:		#double jump
+	#if Input.is_action_just_pressed("attack"):						#attack
+		#is_jumping = false
+		#attack()
+	if Input.is_action_just_pressed("jump") && jump_num > 0:		#double jump
 		jump()
 	elif velocity.y > 0:  											#fall
 		is_jumping = false
@@ -342,8 +342,8 @@ func fall_function(delta) -> void:
 	if is_on_floor():											#idle
 		cur_state = states.IDLE
 		jump_num = max_jump_num
-	elif Input.is_action_just_pressed("attack"):				#attack1
-		attack()
+	#elif Input.is_action_just_pressed("attack"):				#attack1
+		#attack()
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#double jump
 		jump()
 	elif !is_on_floor():										#falling logic
@@ -390,3 +390,7 @@ func _on_skeleton_hurt_player():
 	hurt_player();
 
 
+
+func _on_attack_area_body_entered(body):
+	if body.has_method("hurt"):
+		body.hurt(1)

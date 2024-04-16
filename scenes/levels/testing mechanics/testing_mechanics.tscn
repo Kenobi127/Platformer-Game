@@ -11,7 +11,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_3d1iv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 648.571, 235.714, 0, 0, 0, 0, 661.429, -58.5714, 0, 0, 0, 0, 21.4286, -54.2857, 0, 0, 0, 0, 22.8571, 237.143, 0, 0, 0, 0, 648.571, 235.714)
+"points": PackedVector2Array(0, 0, 0, 0, 648.571, 235.714, 0, 0, 0, 0, 661.429, -125.714, 0, 0, 0, 0, 25.7143, -128.571, 0, 0, 0, 0, 22.8571, 237.143, 0, 0, 0, 0, 648.571, 235.714)
 }
 point_count = 5
 
@@ -21,6 +21,12 @@ point_count = 5
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("6_ilfpw")]
 position = Vector2(195, 102)
+
+[node name="Skeleton2" parent="Enemies" instance=ExtResource("6_ilfpw")]
+position = Vector2(43, 78)
+
+[node name="Skeleton3" parent="Enemies" instance=ExtResource("6_ilfpw")]
+position = Vector2(103, 106)
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -53,3 +59,7 @@ position = Vector2(164, 107)
 position = Vector2(150, 72)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_0kpdo")
+
+[connection signal="hurt_player" from="Enemies/Skeleton" to="Player" method="_on_skeleton_hurt_player"]
+[connection signal="hurt_player" from="Enemies/Skeleton2" to="Player" method="_on_skeleton_hurt_player"]
+[connection signal="hurt_player" from="Enemies/Skeleton3" to="Player" method="_on_skeleton_hurt_player"]
