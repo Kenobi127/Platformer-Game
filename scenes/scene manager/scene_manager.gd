@@ -3,7 +3,7 @@ extends Control
 signal faded_in
 signal faded_out
 
-var currentLevel = "Level1"
+var currentLevel = "World"
 
 # Wrapper function for performing fade in animation
 func fade_in():

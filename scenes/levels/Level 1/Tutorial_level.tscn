@@ -13,7 +13,7 @@ _data = {
 }
 point_count = 4
 
-[node name="Level1" type="Node2D"]
+[node name="World" type="Node2D"]
 process_mode = 1
 
 [node name="TileMap" parent="." instance=ExtResource("3_tfd4b")]

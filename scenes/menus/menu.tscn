@@ -175,7 +175,6 @@ Button/styles/normal = SubResource("StyleBoxEmpty_ln4xm")
 Button/styles/pressed = SubResource("StyleBoxFlat_fwq61")
 
 [node name="Menu" type="Node2D"]
-visible = false
 script = ExtResource("1_q7gmv")
 
 [node name="SkyBackground" type="ParallaxBackground" parent="."]

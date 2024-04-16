@@ -6,9 +6,10 @@ extends CanvasLayer
 
 func _ready():
 	#read all the nodes in the cur level parent node
-	for node in get_tree().get_root().get_child(0).get_children(): 
+	#for node in get_tree().get_root().get_child(0).get_children(): 
+	for node in get_parent().get_parent().get_children(): 
+		print(1)
 		print(node)
-		print(node.name)
 		if node.name == "Player":							#read the player node
 			player = node
 		
@@ -26,5 +27,4 @@ func _ready():
 				var spike_dup = spike.duplicate()
 				sub_viewport.add_child(spike_dup)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 
