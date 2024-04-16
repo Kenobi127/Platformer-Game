@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/minimap.gd" id="1_t8h2l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdmmu"]
-bg_color = Color(0, 0.521569, 0.647059, 0.588235)
+bg_color = Color(0.47451, 0.490196, 0.227451, 0.588235)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.0588235, 0.537255, 0.517647, 0.588235)
+border_color = Color(0.462745, 0.490196, 0.27451, 0.188235)
 
 [node name="Minimap" type="CanvasLayer"]
 script = ExtResource("1_t8h2l")

@@ -67,6 +67,7 @@ grow_vertical = 2
 script = ExtResource("1_5aogb")
 
 [node name="ScreenCenter" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ScreenFader" type="ColorRect" parent="ScreenCenter"]
 z_index = 10

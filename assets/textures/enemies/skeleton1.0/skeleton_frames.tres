@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=76 format=3 uid="uid://g8e7gfpmlbl2"]
+[gd_resource type="SpriteFrames" load_steps=75 format=3 uid="uid://g8e7gfpmlbl2"]
 
 [ext_resource type="Texture2D" uid="uid://bmb54f1gx517h" path="res://assets/textures/enemies/skeleton1.0/skeleton_attack_new.png" id="1_gfnfj"]
 [ext_resource type="Texture2D" uid="uid://68kn1px8xhl0" path="res://assets/textures/enemies/skeleton1.0/skeleton_death_new.png" id="2_n6qdt"]
@@ -138,10 +138,6 @@ region = Rect2(429, 0, 33, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sti0q"]
 atlas = ExtResource("2_n6qdt")
 region = Rect2(462, 0, 33, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2j5i7"]
-atlas = ExtResource("3_aalgo")
-region = Rect2(0, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slie7"]
 atlas = ExtResource("3_aalgo")
@@ -395,9 +391,6 @@ animations = [{
 "speed": 12.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2j5i7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_slie7")
 }, {

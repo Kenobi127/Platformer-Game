@@ -8,8 +8,8 @@ func _ready():
 	#read all the nodes in the cur level parent node
 	#for node in get_tree().get_root().get_child(0).get_children(): 
 	for node in get_parent().get_parent().get_children(): 
-		print(1)
-		print(node)
+		#print(1)
+		#print(node)
 		if node.name == "Player":							#read the player node
 			player = node
 		
