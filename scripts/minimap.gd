@@ -27,4 +27,6 @@ func _ready():
 				var spike_dup = spike.duplicate()
 				sub_viewport.add_child(spike_dup)
 
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	camera.position = player.position
