@@ -29,8 +29,7 @@ func _ready():
 	fade_in()
 	# Connect a signal so that when start game is pressed, the game begins
 	#$Menu.connect('start_pressed',transition_to_level_one)
-	for node in get_parent().get_children():
-		print(node)
+
 
 
 

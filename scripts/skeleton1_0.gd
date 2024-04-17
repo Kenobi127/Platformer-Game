@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 
-@export var normal_speed: float = 20
+#normal speed is 20 and chase is 35
+@export var normal_speed: float = randf_range(16, 24)
 @export var chase_speed: float = 35
 @export var direction: float = 1
 @export var max_lives: int = 5
@@ -10,7 +11,7 @@ extends CharacterBody2D
 @onready var player: Player
 
 
-var initial_position: Vector2 = Vector2(0,0)
+var initial_position: Vector2 = Vector2(30,0)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_chasing: bool = false
 var is_attacking: bool = false
@@ -101,7 +102,6 @@ func hurt(amount):
 		position.x += -5
 	else:
 		position.x += 5
-	
 	
 	if lives<1:
 		anim.play("death")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs2ynknivuqov"]
+[gd_scene load_steps=11 format=3 uid="uid://cs2ynknivuqov"]
 
 [ext_resource type="Script" path="res://scripts/testing_mechanics.gd" id="1_3fuar"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="1_rpmpf"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="2_g27us"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="2_w1wvf"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_4vhrx"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="3_b2hi8"]
 [ext_resource type="Texture2D" uid="uid://d1n4druoaeqqs" path="res://assets/textures/levels/measuring_background.png" id="6_0kpdo"]
@@ -11,7 +12,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_3d1iv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 648.571, 235.714, 0, 0, 0, 0, 661.429, -125.714, 0, 0, 0, 0, 25.7143, -128.571, 0, 0, 0, 0, 22.8571, 237.143, 0, 0, 0, 0, 648.571, 235.714)
+"points": PackedVector2Array(0, 0, 0, 0, 490, 225.714, 0, 0, 0, 0, 491.429, -125.714, 0, 0, 0, 0, 25.7143, -128.571, 0, 0, 0, 0, 24.2857, 225.714, 0, 0, 0, 0, 490, 225.714)
 }
 point_count = 5
 
@@ -20,10 +21,13 @@ script = ExtResource("1_3fuar")
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Skeleton" parent="Enemies" instance=ExtResource("2_w1wvf")]
+position = Vector2(60, 109)
+
 [node name="Spikes" type="Node2D" parent="."]
 
 [node name="StaticSpike" parent="Spikes" instance=ExtResource("8_uqcxf")]
-position = Vector2(358, 129)
+position = Vector2(423, 128)
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 

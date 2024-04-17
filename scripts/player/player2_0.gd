@@ -395,4 +395,9 @@ func hurt_player():
 
 func _on_attack_area_body_entered(body):
 	if body.has_method("hurt"):
-		body.hurt(1)
+		if anim.current_animation == "attack1":
+			body.hurt(1)
+		elif anim.current_animation == "attack2":
+			body.hurt(1.5)
+		elif anim.current_animation == "attack3":
+			body.hurt(2.5) 
