@@ -79,11 +79,6 @@ var state_functions: Dictionary = {
 	states.HURT: hurt_function
 }
 
-
-
-
-
-
 func _ready():
 	jump_particles.scale_amount_max = 0;
 	jump_particles.emitting = true;			#preload the particles

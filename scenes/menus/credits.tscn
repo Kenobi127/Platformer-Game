@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjqvmxsqpukj4"]
+[gd_scene load_steps=8 format=3 uid="uid://cjqvmxsqpukj4"]
 
 [ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="1_ouqap"]
+[ext_resource type="Script" path="res://scripts/menus/credits.gd" id="1_sahhy"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_2hpso"]
+[ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_b0smk"]
+[ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="4_dfpsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmn4u"]
 texture = ExtResource("1_ouqap")
@@ -63,6 +66,7 @@ texture = ExtResource("1_ouqap")
 sources/0 = SubResource("TileSetAtlasSource_xmn4u")
 
 [node name="CreditsCanvas" type="CanvasLayer"]
+script = ExtResource("1_sahhy")
 
 [node name="Credits" type="Control" parent="."]
 layout_mode = 3
@@ -123,3 +127,18 @@ Brent Yelle
 Joseph Mego
 Angel Vazquez"
 metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 29.0
+offset_right = 64.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 11
+text = "<-"
+
+[node name="ParalaxClouds1" parent="." instance=ExtResource("3_b0smk")]
+
+[node name="ParalaxMountains1" parent="." instance=ExtResource("4_dfpsd")]
+
+[connection signal="pressed" from="Credits/Button" to="." method="_on_button_pressed"]
