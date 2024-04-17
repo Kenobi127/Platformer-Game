@@ -23,19 +23,29 @@ func button_chime():
 	
 func _ready():
 	# Load the main menu scene
-	var main_menu=preload("res://scenes/menus/menu.tscn").instantiate()
-	add_child(main_menu)
+	#var main_menu=preload("res://scenes/menus/menu.tscn").instantiate()
+	#add_child(main_menu)
 	# Fade into main menu
 	fade_in()
 	# Connect a signal so that when start game is pressed, the game begins
-	main_menu.connect('start_pressed',transition_to_level_one)
+	#$Menu.connect('start_pressed',transition_to_level_one)
+
+
+
+
+func _process(delta: float) -> void:
+	pass
+	#print()
+	#for node in get_parent().get_children():
+		#print(node)
+
 
 func transition_to_level_one():
 	# Fade out of main menu
 	fade_out()
 	await faded_out
 	# Remove the main menu
-	get_node("Menu").queue_free()
+	get_node("Menu").free()
 	# Load in level one
 	var world=preload("res://scenes/levels/Level 1/Tutorial_level.tscn").instantiate()
 	add_child(world)
@@ -50,6 +60,7 @@ func transition_to_level_one():
 	# Fade into level one
 	fade_in()
 	await faded_in
+
 
 func return_to_title():
 	# Fade out of game

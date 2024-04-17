@@ -255,22 +255,27 @@ func slide_function(delta) -> void:
 	if anim.current_animation=="slide":										#slide logic
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(3, false)
+		$Camera2D.position_smoothing_speed = 8
 		velocity.x = max_slide_speed*get_sprite_direction()
 	elif horizontal_direction==0 && Input.is_action_pressed("crouch") || crouch_shapecast.is_colliding():		#crouch
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
+		$Camera2D.position_smoothing_speed = 4
 		cur_state = states.CROUCHING
 	elif horizontal_direction!=0 && Input.is_action_pressed("crouch"):		#crouch walk
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
+		$Camera2D.position_smoothing_speed = 4
 		cur_state = states.CROUCH_WALK
 	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
+		$Camera2D.position_smoothing_speed = 4
 		cur_state = states.RUNNING
 	else:																	#idle
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
+		$Camera2D.position_smoothing_speed = 4
 		cur_state = states.IDLE
 
 
@@ -386,11 +391,13 @@ func hurt_player():
 			$Hurt.play()
 			anim.play("hurt")
 
-func _on_skeleton_hurt_player():
-	hurt_player();
-
 
 
 func _on_attack_area_body_entered(body):
 	if body.has_method("hurt"):
-		body.hurt(1)
+		if anim.current_animation == "attack1":
+			body.hurt(1)
+		elif anim.current_animation == "attack2":
+			body.hurt(1.5)
+		elif anim.current_animation == "attack3":
+			body.hurt(2.5) 

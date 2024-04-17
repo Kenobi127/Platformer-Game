@@ -2,6 +2,8 @@ extends Node2D
 
 signal start_pressed
 
+
+
 func _on_start_game_pressed():
 	# Emit start signal
 	SceneManager.button_chime()
