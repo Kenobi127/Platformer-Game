@@ -31,7 +31,7 @@ func _input(event):
 			hide()
 
 func _on_full_choice_toggled(toggled_on):
-	SceneManager.button_chime()
+	$PauseControl/ButtonPressed.play()
 	# Shift screen between windowed and fullscreen
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -40,13 +40,14 @@ func _on_full_choice_toggled(toggled_on):
 
 
 func _on_return_title_pressed():
-	SceneManager.button_chime()
+	$PauseControl/ButtonPressed.play()
 	# Hide the pause menu
 	hide()
 	# Unpause tree
 	get_tree().paused = false
+	pause = false
 	# Emit signal to return to title screen
-	emit_signal("return_title")
+	SceneManager.load_scene("res://scenes/menus/menu.tscn")
 
 
 #func _get_Music_Name():

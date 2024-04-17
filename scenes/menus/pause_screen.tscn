@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://boad44k2ingsg"]
+[gd_scene load_steps=15 format=3 uid="uid://boad44k2ingsg"]
 
 [ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="1_psmre"]
 [ext_resource type="Script" path="res://scripts/menus/pause_screen.gd" id="1_vjt2f"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_ryr6l"]
 [ext_resource type="FontFile" uid="uid://bu638ev4rorqq" path="res://assets/fonts/ThaleahFat.ttf" id="3_lodyx"]
 [ext_resource type="AudioStream" uid="uid://c0m7d3gbn07cc" path="res://assets/sounds/game_pause.wav" id="5_h8i7w"]
+[ext_resource type="AudioStream" uid="uid://b6ngimp55rwy" path="res://assets/sounds/menu_select.wav" id="6_42wxf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4au6"]
 texture = ExtResource("1_psmre")
@@ -254,7 +255,9 @@ text = "Main Menu
 
 [node name="PauseAudio" type="AudioStreamPlayer" parent="PauseControl"]
 stream = ExtResource("5_h8i7w")
-bus = &"SFX"
+
+[node name="ButtonPressed" type="AudioStreamPlayer" parent="PauseControl"]
+stream = ExtResource("6_42wxf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseControl"]
 layout_mode = 0

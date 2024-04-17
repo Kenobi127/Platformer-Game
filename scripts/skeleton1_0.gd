@@ -74,14 +74,12 @@ func chase_player(body):
 		
 	velocity.x = chase_speed * direction
 	anim.speed_scale = 1.75
-	
-	
+
 func _on_damage_area_body_entered(body):
 	is_chasing = false
 	is_attacking = true
 	can_hurt = true
 	velocity.x = 0
-
 
 func _on_damage_area_body_exited(body):
 	can_hurt = false
@@ -92,7 +90,6 @@ func damage_player():
 
 func stop_attacking():
 	is_attacking = false
-	
 
 func hurt(amount):
 	lives -= amount
