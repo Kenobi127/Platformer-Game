@@ -169,6 +169,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_bbj02")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
+layer = 3
 script = ExtResource("1_vjt2f")
 
 [node name="PauseControl" type="Control" parent="."]

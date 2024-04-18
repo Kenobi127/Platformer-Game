@@ -11,7 +11,6 @@ extends CharacterBody2D
 @onready var player: Player
 
 
-var initial_position: Vector2 = Vector2(30,0)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_chasing: bool = false
 var is_attacking: bool = false
@@ -23,7 +22,6 @@ var lives: int = 1
 var debug = "not set"
 
 func _ready():
-	position = initial_position
 	lives = max_lives
 	for node in get_parent().get_parent().get_children():
 		if node.name == "Player":
