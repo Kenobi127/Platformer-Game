@@ -386,8 +386,6 @@ func hurt_player():
 			$Hurt.play()
 			anim.play("hurt")
 
-
-
 func _on_attack_area_body_entered(body):
 	if body.has_method("hurt"):
 		if anim.current_animation == "attack1":
@@ -396,3 +394,7 @@ func _on_attack_area_body_entered(body):
 			body.hurt(1.5)
 		elif anim.current_animation == "attack3":
 			body.hurt(2.5) 
+
+func pick_up_collectable(collectable):
+	collectable.queue_free()
+	# do whatever, add to score, etc.

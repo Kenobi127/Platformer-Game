@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://nwvsxdmblq2a"]
+[gd_scene load_steps=15 format=3 uid="uid://dqx1lqc1j3uyy"]
 
 [ext_resource type="Script" path="res://scripts/skeleton1_0.gd" id="1_axr48"]
 [ext_resource type="SpriteFrames" uid="uid://g8e7gfpmlbl2" path="res://assets/textures/enemies/skeleton1.0/skeleton_frames.tres" id="2_afu6y"]
