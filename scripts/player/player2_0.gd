@@ -88,12 +88,13 @@ func _process(delta):
 	#print(state_names[cur_state], " ", debug, " ", velocity.x, " can move ", can_move, " ", jump_num, " ", is_jumping)
 	horizontal_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if position.y>1000:
+		$FallDeath.play()
 		position = initial_position
 
 
 func _physics_process(delta):
 	state_functions[cur_state].call(delta)
-	if !is_on_floor() && !is_jumping:				#falling logic universal
+	if !is_on_floor() && !is_jumping && cur_state!=states.HURT:				#falling logic universal
 		can_move = true
 		cur_state = states.FALL
 	move_and_slide()
@@ -139,15 +140,20 @@ func jump():
 	is_jumping = true
 	velocity.y = jump_velocity
 	cur_state = states.JUMP
+	$Jump.play()
 	if jump_num == max_jump_num:	# Single jump
 		anim.play("jump")
 		jump_particles.scale_amount_max = 1;	#jumping particles
 		jump_particles.emitting = true;
 	else:							# Double jump
 		anim.play("roll") #flip animation 
-	
 	jump_num -= 1
 
+func slide():
+	if $Timer.time_left==0:
+		cur_state = states.SLIDE
+		anim.play("slide")
+		$Timer.start()
 
 func attack():
 	can_move = false
@@ -174,8 +180,7 @@ func idle_function(delta) -> void:
 	if horizontal_direction!=0:									#running
 		cur_state = states.RUNNING
 	elif Input.is_action_just_pressed("slide"):					#sliding
-		cur_state = states.SLIDE
-		anim.play("slide")
+		slide()
 	elif Input.is_action_just_pressed("crouch"):				#crouching
 		cur_state = states.CROUCHING
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#jumping
@@ -196,8 +201,7 @@ func running_function(delta) -> void:
 	elif Input.is_action_pressed("crouch"):	#crouch_walk
 		cur_state = states.CROUCH_WALK
 	elif Input.is_action_just_pressed("slide"):		#slide
-		cur_state = states.SLIDE
-		anim.play("slide")
+		slide()
 	elif Input.is_action_just_pressed("jump"):		#jump
 		jump()
 	elif Input.is_action_just_pressed("attack"):	#attack1
@@ -205,6 +209,8 @@ func running_function(delta) -> void:
 	elif can_move: 									#logic for movement
 		handle_movement(delta)
 		anim.play("run")
+		if $Walk.playing==false && $Land.playing==false && is_on_floor():
+			$Walk.play()
 
 
 
@@ -214,8 +220,7 @@ func crouching_function(delta) -> void:
 	elif horizontal_direction!=0:					#crouch_walk
 		cur_state = states.CROUCH_WALK
 	elif Input.is_action_just_pressed("slide"):		#slide
-		cur_state = states.SLIDE
-		anim.play("slide")
+		slide()
 	elif Input.is_action_just_pressed("jump") && !crouch_shapecast.is_colliding():		#jump
 		jump()
 	elif Input.is_action_just_pressed("attack") && !crouch_shapecast.is_colliding():	#attack1
@@ -233,8 +238,7 @@ func crouch_walking_function(delta) -> void:
 	elif horizontal_direction==0:					#crouch
 		cur_state = states.CROUCHING
 	elif Input.is_action_just_pressed("slide"):		#slide
-		cur_state = states.SLIDE
-		anim.play("slide")
+		slide()
 	elif Input.is_action_just_pressed("jump") && !crouch_shapecast.is_colliding():		#jump
 		jump()
 	elif Input.is_action_just_pressed("attack") && !crouch_shapecast.is_colliding():	#attack1
@@ -242,6 +246,8 @@ func crouch_walking_function(delta) -> void:
 	elif can_move: 									#logic for movement
 		handle_movement(delta)
 		anim.play("crouch_walk")
+		if $CrouchWalk.playing==false && $Land.playing==false && is_on_floor():
+			$CrouchWalk.play()
 
 
 
@@ -286,7 +292,6 @@ func attack1_function(delta) -> void:
 	else:
 		handle_movement(delta)
 		anim.play("attack1")
-		
 		if Input.is_action_just_pressed("attack"): #bool to attack 2
 			is_attack_combo = true
 			look_at_mouse()
@@ -342,6 +347,8 @@ func fall_function(delta) -> void:
 	if is_on_floor():											#idle
 		cur_state = states.IDLE
 		jump_num = max_jump_num
+		if $Land.playing==false:
+			$Land.play()
 	#elif Input.is_action_just_pressed("attack"):				#attack1
 		#attack()
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#double jump

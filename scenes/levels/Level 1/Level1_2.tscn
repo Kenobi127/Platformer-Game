@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://da0qw3x5p23wl"]
 
-[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/skeleton1_0.tscn" id="2_sv537"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="2_sv537"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_s33yb"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_8e2yc"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_k1ume"]
