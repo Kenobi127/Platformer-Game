@@ -19,8 +19,8 @@ func _ready():
 	
 func _input(event):
 	# Check if esc is pressed and swap paused state
-	if event.is_action_pressed("pause"):
-		$PauseControl/PauseAudio.play()
+	if event.is_action_pressed("pause") && SceneManager.current_scene.name!="Menu" && SceneManager.current_scene.name!="CreditsCanvas":
+		$PauseControl/ButtonPressed.play()
 		if pause == false:
 			pause = true
 			get_tree().paused = true
@@ -40,7 +40,7 @@ func _on_full_choice_toggled(toggled_on):
 
 
 func _on_return_title_pressed():
-	$PauseControl/ButtonPressed.play()
+	$PauseControl/BackToMenu.play()
 	# Hide the pause menu
 	hide()
 	# Unpause tree

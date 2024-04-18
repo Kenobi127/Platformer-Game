@@ -110,7 +110,30 @@ func back_to_normal():
 	is_chasing = false
 
 func die():
+	# spawn a collectable gem on death
+	spawn_gem()
 	queue_free()
 
+
+
+# Pre-cache the collectable scene
+var collectable_scene = preload("res://scenes/other/collectable.tscn")
+
+func spawn_gem():
+	# Instantiate the pre-cached collectable scene
+	var gem = collectable_scene.instantiate()
+	# Determine the direction based on the gem's initial position
+	var direction = Vector2.ZERO
+	if position.x < 0:
+		direction = Vector2(-1, -2)
+	else:
+		direction = Vector2(1, -2)
+		gem.direction = direction
+
+	# Add the gem as a child of the parent node
+	get_parent().add_child(gem)
+
+	# Set the gem's position
+	gem.position = position
 
 

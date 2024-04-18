@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://tfumugscb7qp"]
+[gd_scene load_steps=4 format=3 uid="uid://tfumugscb7qp"]
 
 [ext_resource type="Script" path="res://scripts/menus/win.gd" id="1_pynt8"]
+[ext_resource type="AudioStream" uid="uid://di0s57pyfs6mn" path="res://assets/sounds/player/endpoint.wav" id="2_75du6"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_gtpdq"]
 
 [node name="WinCanvas" type="CanvasLayer"]
 layer = 3
 script = ExtResource("1_pynt8")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_75du6")
+volume_db = -3.0
+pitch_scale = 1.5
 
 [node name="Win" type="Control" parent="."]
 layout_mode = 3

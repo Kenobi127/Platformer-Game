@@ -23,6 +23,8 @@ func _ready():
 	win_screen.hide()
 
 func _process(delta):
+	if Input.is_action_just_pressed("debug"):
+		SceneManager.finish_level()
 	if timer_screen != null:
 		time_taken = timer_screen.return_timer_value()
 	#for node in get_children():
@@ -57,8 +59,10 @@ func start_game():
 func quit_game():
 	get_tree().quit()
 
+
 func finish_level():
-	win_screen.show()
+	if win_screen.visible == false:
+		win_screen.show_win_screen()
 	if timer_screen != null:
 		timer_screen.stop_timer()
 		timer_screen.queue_free()

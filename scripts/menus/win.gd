@@ -13,6 +13,9 @@ func _on_main_button_pressed():
 	SceneManager.load_scene("res://scenes/menus/menu.tscn")
 	hide()
 
+func show_win_screen():
+	$WinSound.play()
+	show()
 
 func _on_next_button_pressed():
 	if SceneManager.current_scene.name == "WorldTutorial":

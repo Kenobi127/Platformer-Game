@@ -177,6 +177,11 @@ Button/styles/pressed = SubResource("StyleBoxFlat_fwq61")
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_q7gmv")
 
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ulpo8")
+volume_db = -25.0
+autoplay = true
+
 [node name="SkyBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_lkhie")
 
@@ -285,11 +290,6 @@ offset_top = 157.0
 offset_right = 318.0
 offset_bottom = 172.0
 text = "Arena Mode"
-
-[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ulpo8")
-volume_db = -24.86
-autoplay = true
 
 [connection signal="pressed" from="MenuMap/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MenuMap/CreditsView" to="." method="_on_credits_view_pressed"]

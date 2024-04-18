@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcbfolw1aiu0o"]
+[gd_scene load_steps=4 format=3 uid="uid://dcbfolw1aiu0o"]
 
 [ext_resource type="Script" path="res://scripts/win_flag.gd" id="1_jrrba"]
 [ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="2_t5pc5"]
-[ext_resource type="AudioStream" uid="uid://di0s57pyfs6mn" path="res://assets/sounds/player/endpoint.wav" id="3_8ivlb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb6xu"]
 size = Vector2(16.25, 60)
@@ -37,10 +36,5 @@ region_rect = Rect2(48, 113, 3, 30)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24.375, -30)
 shape = SubResource("RectangleShape2D_sb6xu")
-
-[node name="Win" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_8ivlb")
-volume_db = 10.0
-pitch_scale = 1.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

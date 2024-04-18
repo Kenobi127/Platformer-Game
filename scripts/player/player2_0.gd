@@ -90,11 +90,14 @@ func _process(delta):
 	if position.y>1000:
 		$FallDeath.play()
 		position = initial_position
+		cur_lives = max_lives
 
 
 func _physics_process(delta):
 	state_functions[cur_state].call(delta)
 	if !is_on_floor() && !is_jumping && cur_state!=states.HURT:				#falling logic universal
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(3, true)
 		can_move = true
 		cur_state = states.FALL
 	move_and_slide()
@@ -256,27 +259,27 @@ func slide_function(delta) -> void:
 	if anim.current_animation=="slide":										#slide logic
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(3, false)
-		$Camera2D.position_smoothing_speed = 8
+		$Camera2D.position_smoothing_speed = 0.5
 		velocity.x = max_slide_speed*get_sprite_direction()
 	elif horizontal_direction==0 && Input.is_action_pressed("crouch") || crouch_shapecast.is_colliding():		#crouch
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
-		$Camera2D.position_smoothing_speed = 4
+		$Camera2D.position_smoothing_speed = 3
 		cur_state = states.CROUCHING
 	elif horizontal_direction!=0 && Input.is_action_pressed("crouch"):		#crouch walk
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
-		$Camera2D.position_smoothing_speed = 4
+		$Camera2D.position_smoothing_speed = 3
 		cur_state = states.CROUCH_WALK
 	elif horizontal_direction!=0 && !Input.is_action_pressed("crouch"):		#run
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
-		$Camera2D.position_smoothing_speed = 4
+		$Camera2D.position_smoothing_speed = 3
 		cur_state = states.RUNNING
 	else:																	#idle
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(3, true)
-		$Camera2D.position_smoothing_speed = 4
+		$Camera2D.position_smoothing_speed = 3
 		cur_state = states.IDLE
 
 
@@ -345,31 +348,38 @@ func jump_function(delta: float) -> void:
 
 func fall_function(delta) -> void:
 	if is_on_floor():											#idle
-		cur_state = states.IDLE
 		jump_num = max_jump_num
 		if $Land.playing==false:
 			$Land.play()
+		if crouch_shapecast.is_colliding():
+			cur_state = states.CROUCHING
+		else:
+			cur_state = states.IDLE
 	#elif Input.is_action_just_pressed("attack"):				#attack1
 		#attack()
 	elif Input.is_action_just_pressed("jump") && jump_num>0:	#double jump
 		jump()
 	elif !is_on_floor():										#falling logic
 		handle_movement(delta)
-		
-		#if jump_num == max_jump_num: #this means went airborn without jumping
-		#	jump_num = max_jump_num-1
-		
+		$Camera2D.position_smoothing_speed = 4
 		velocity.y += get_gravity() * delta
 		if velocity.y>max_fall_speed:
 			velocity.y = max_fall_speed
 		anim.play("falling")
+		
+		#if jump_num == max_jump_num: #this means went airborn without jumping
+		#	jump_num = max_jump_num-1
 
 
 
 func hurt_function(delta) -> void:
 	if anim.current_animation!="hurt" && anim.current_animation!="death":
 		can_move = true
-		cur_state = states.IDLE
+		if crouch_shapecast.is_colliding():
+			cur_state = states.CROUCHING
+		else:
+			cur_state = states.IDLE
+			
 
 
 
@@ -403,3 +413,9 @@ func _on_attack_area_body_entered(body):
 			body.hurt(1.5)
 		elif anim.current_animation == "attack3":
 			body.hurt(2.5) 
+
+
+func pick_up_collectable(collectable):
+	collectable.queue_free()
+	# do whatever, add to score, etc.
+
