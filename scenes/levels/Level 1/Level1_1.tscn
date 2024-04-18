@@ -73,7 +73,7 @@ _data = {
 }
 point_count = 2
 
-[node name="World" type="Node2D"]
+[node name="World1_1" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_hp6la")]
 scale = Vector2(0.7, 0.7)
@@ -163,5 +163,3 @@ speed_scale = 0.5
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("6_ppp0b")]
 position = Vector2(232, 105)
-
-[connection signal="hurt_player" from="Enemies/Skeleton" to="Player" method="_on_skeleton_hurt_player"]
