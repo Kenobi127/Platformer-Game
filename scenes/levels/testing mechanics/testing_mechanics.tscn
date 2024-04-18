@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1n4druoaeqqs" path="res://assets/textures/levels/measuring_background.png" id="6_0kpdo"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="7_u0kyo"]
 [ext_resource type="PackedScene" uid="uid://j6b1e4kmftwp" path="res://scenes/character bodies/enemies/staticspike.tscn" id="8_uqcxf"]
-[ext_resource type="PackedScene" uid="uid://dlnxc7wabtpow" path="res://scenes/other/button.tscn" id="9_yt4it"]
+[ext_resource type="PackedScene" uid="uid://dukg1epfj1e33" path="res://scenes/other/rich_text_label.tscn" id="10_rj2ad"]
 
 [sub_resource type="Curve2D" id="Curve2D_3d1iv"]
 _data = {
@@ -46,18 +46,18 @@ offset = Vector2(64, 40)
 transform = Transform2D(1, 0, 0, 1, 64, 40)
 
 [node name="Player" parent="." instance=ExtResource("2_g27us")]
-position = Vector2(46, 108)
+position = Vector2(50, 120)
+initial_position = Vector2(50, 120)
 
 [node name="MeasuringBackground" type="Sprite2D" parent="."]
 position = Vector2(88, 71.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_0kpdo")
 
-[node name="NameText2" parent="." instance=ExtResource("9_yt4it")]
-z_index = 5
-offset_left = 155.0
-offset_top = 131.0
-offset_right = 407.0
-offset_bottom = 146.0
-text = "Press y to spawn skeletons
-"
+[node name="RichTextLabel" parent="." instance=ExtResource("10_rj2ad")]
+z_index = 2
+offset_left = 178.0
+offset_top = 133.0
+offset_right = 328.0
+offset_bottom = 173.0
+text = "Press y to spawn skeletons"
