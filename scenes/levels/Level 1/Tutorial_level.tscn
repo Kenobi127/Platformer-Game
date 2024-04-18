@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_1mrfq"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_mpyvf"]
 [ext_resource type="PackedScene" uid="uid://b4uds3qkjmj0a" path="res://scenes/other/text_label.tscn" id="7_88tmb"]
-[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="8_0yn4d"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/skeleton1_0.tscn" id="8_0yn4d"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="8_hn8f8"]
 
 [sub_resource type="Curve2D" id="Curve2D_6tnwg"]
