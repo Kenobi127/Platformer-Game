@@ -30,3 +30,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera.position = player.position
+	$SubViewportContainer/SubViewport/PlayerPos.position = player.position

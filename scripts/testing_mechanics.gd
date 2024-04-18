@@ -5,7 +5,7 @@ extends Node2D
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("InputTest"):
 		var skeleton = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn").instantiate()
-		skeleton.initial_position = Vector2(50, 0)
+		skeleton.position = Vector2(randi_range(250, 500), 0)
 		$Enemies.add_child(skeleton)
 		
 		
