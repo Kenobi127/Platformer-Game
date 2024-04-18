@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpt2hb1tomxi2"]
+[gd_scene load_steps=20 format=3 uid="uid://bpt2hb1tomxi2"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu.gd" id="1_q7gmv"]
 [ext_resource type="Script" path="res://scripts/paralax_clouds.gd" id="2_lkhie"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2w03t87biyik" path="res://assets/textures/backgrounds/MountainsBack.png" id="5_i40om"]
 [ext_resource type="Texture2D" uid="uid://cdakvk8835pgu" path="res://assets/textures/backgrounds/MountainsFront.png" id="6_dr4q5"]
 [ext_resource type="AudioStream" uid="uid://btc5kqyoeupqn" path="res://assets/sounds/music_menu_CREDIT_Trevor_Kentz.mp3" id="6_ulpo8"]
+[ext_resource type="PackedScene" uid="uid://dlnxc7wabtpow" path="res://scenes/other/button.tscn" id="10_mffp8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shns0"]
 texture = ExtResource("3_14xbp")
@@ -278,21 +279,11 @@ size_flags_vertical = 4
 theme = SubResource("Theme_npxxk")
 text = "Quit Game"
 
-[node name="Arena" type="Button" parent="MenuMap"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
+[node name="Arena" parent="MenuMap" instance=ExtResource("10_mffp8")]
 offset_left = 235.0
-offset_top = 159.0
+offset_top = 157.0
 offset_right = 318.0
-offset_bottom = 174.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_npxxk")
-theme_override_font_sizes/font_size = 16
+offset_bottom = 172.0
 text = "Arena Mode"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]

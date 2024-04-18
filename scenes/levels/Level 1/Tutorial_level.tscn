@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ut4hxqgw3iys"]
+[gd_scene load_steps=9 format=3 uid="uid://ut4hxqgw3iys"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_tfd4b"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_236wj"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_o7vye"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_1mrfq"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_mpyvf"]
+[ext_resource type="PackedScene" uid="uid://b4uds3qkjmj0a" path="res://scenes/other/text_label.tscn" id="7_88tmb"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="8_hn8f8"]
 
 [sub_resource type="Curve2D" id="Curve2D_6tnwg"]
@@ -39,3 +40,12 @@ position = Vector2(164, 107)
 
 [node name="Flagpole" parent="." instance=ExtResource("6_mpyvf")]
 position = Vector2(4465, -88)
+
+[node name="CreditText2" parent="." instance=ExtResource("7_88tmb")]
+offset_left = 157.0
+offset_top = 99.0
+offset_right = 266.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 8
+text = "Press Space to 
+jump and double jump"
