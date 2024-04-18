@@ -34,7 +34,7 @@ func load_scene(scene_path):
 	
 	# Load the new scene
 	current_scene = load(scene_path).instantiate()
-	print(current_scene)
+	#print(current_scene)
 	add_child(current_scene)
 
 func load_credits():

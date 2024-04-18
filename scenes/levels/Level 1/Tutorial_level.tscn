@@ -21,7 +21,7 @@ process_mode = 1
 [node name="MovingPlatform" parent="Moving Platforms" instance=ExtResource("8_hn8f8")]
 position = Vector2(3027, 71)
 curve = SubResource("Curve2D_6tnwg")
-speed_scale = 0.4
+speed_scale = 0.2
 
 [node name="TileMap" parent="." instance=ExtResource("3_tfd4b")]
 scale = Vector2(0.7, 0.7)
