@@ -221,15 +221,6 @@ format = 2
 layer_0/name = "main_menu"
 layer_0/tile_data = PackedInt32Array(65539, 0, 0, 131075, 0, 1, 196611, 0, 2, 131076, 65536, 1, 131077, 65536, 1, 131078, 65536, 1, 131079, 65536, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 131083, 65536, 1, 131084, 65536, 1, 131085, 65536, 1, 131086, 65536, 1, 131087, 65536, 1, 131088, 131072, 1, 196624, 131072, 2, 65552, 131072, 0, 196612, 65536, 2, 196613, 65536, 2, 196614, 65536, 2, 196615, 65536, 2, 196616, 65536, 2, 196617, 65536, 2, 196618, 65536, 2, 196619, 65536, 2, 196620, 65536, 2, 196621, 65536, 2, 196622, 65536, 2, 196623, 65536, 2, 65540, 65536, 0, 65541, 65536, 0, 65542, 65536, 0, 65543, 65536, 0, 65544, 65536, 0, 65545, 65536, 0, 65546, 65536, 0, 65547, 65536, 0, 65548, 65536, 0, 65549, 65536, 0, 65550, 65536, 0, 65551, 65536, 0, 393223, 720896, 2, 393224, 720896, 2, 393225, 720896, 2, 393226, 720896, 2, 393227, 720896, 2, 393228, 720896, 2, 393229, 720896, 2, 524296, 720896, 2, 524297, 720896, 2, 524298, 720896, 2, 524299, 720896, 2, 524300, 786432, 2, 655367, 720896, 2, 655368, 720896, 2, 655369, 720896, 2, 655370, 720896, 2, 655371, 720896, 2, 655372, 720896, 2, 393230, 851968, 2, 655373, 786432, 2, 655366, 655360, 2, 524295, 655360, 2, 393222, 655360, 2, 524301, 851968, 2, 655374, 851968, 2)
 
-[node name="StartGame" type="Button" parent="MenuMap"]
-offset_left = 95.0
-offset_top = 80.0
-offset_right = 240.0
-offset_bottom = 104.0
-size_flags_horizontal = 4
-theme = SubResource("Theme_npxxk")
-text = "Start Game"
-
 [node name="TitleText" type="RichTextLabel" parent="MenuMap"]
 offset_left = 74.0
 offset_top = 25.0
@@ -238,6 +229,22 @@ offset_bottom = 65.0
 theme = ExtResource("4_ylmq2")
 theme_override_font_sizes/normal_font_size = 32
 text = "skylighter 2"
+
+[node name="StartGame" type="Button" parent="MenuMap"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 81.0
+offset_right = 230.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_npxxk")
+text = "Start Game"
 
 [node name="CreditsView" type="Button" parent="MenuMap"]
 anchors_preset = 14
@@ -256,12 +263,37 @@ theme = SubResource("Theme_npxxk")
 text = "Credits"
 
 [node name="QuitGame" type="Button" parent="MenuMap"]
-offset_left = 114.0
-offset_top = 144.0
-offset_right = 224.0
-offset_bottom = 168.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = 146.0
+offset_right = 220.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = SubResource("Theme_npxxk")
 text = "Quit Game"
+
+[node name="Arena" type="Button" parent="MenuMap"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 235.0
+offset_top = 159.0
+offset_right = 318.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_npxxk")
+theme_override_font_sizes/font_size = 16
+text = "Arena Mode"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ulpo8")
@@ -271,3 +303,4 @@ autoplay = true
 [connection signal="pressed" from="MenuMap/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MenuMap/CreditsView" to="." method="_on_credits_view_pressed"]
 [connection signal="pressed" from="MenuMap/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="MenuMap/Arena" to="." method="_on_arena_pressed"]

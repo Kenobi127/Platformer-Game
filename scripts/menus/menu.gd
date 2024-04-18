@@ -13,3 +13,7 @@ func _on_credits_view_pressed():
 func _on_quit_game_pressed():
 	# Call the quit_game function in the scene manager
 	SceneManager.quit_game()
+
+
+func _on_arena_pressed() -> void:
+	SceneManager.load_scene("res://scenes/levels/testing mechanics/testing_mechanics.tscn")
