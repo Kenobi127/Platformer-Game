@@ -22,10 +22,10 @@ func _ready():
 	win_screen.hide()
 
 func _process(delta):
-	#pass
-	for node in get_children():
-		print(node, " ", debug)
-	print()
+	pass
+	#for node in get_children():
+		#print(node, " ", debug)
+	#print()
 
 func load_scene(scene_path):
 	# Unload the current scene if there is one
@@ -34,7 +34,7 @@ func load_scene(scene_path):
 	
 	# Load the new scene
 	current_scene = load(scene_path).instantiate()
-	print(current_scene)
+	#print(current_scene)
 	add_child(current_scene)
 
 func load_credits():
