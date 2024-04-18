@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ut4hxqgw3iys"]
+[gd_scene load_steps=10 format=3 uid="uid://ut4hxqgw3iys"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_tfd4b"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_236wj"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_1mrfq"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_mpyvf"]
 [ext_resource type="PackedScene" uid="uid://b4uds3qkjmj0a" path="res://scenes/other/text_label.tscn" id="7_88tmb"]
+[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="8_0yn4d"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="8_hn8f8"]
 
 [sub_resource type="Curve2D" id="Curve2D_6tnwg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -29.9995, 67.1428, 0, 0, 0, 0, 488.572, 68.5714, 0, 0, 0, 0, -31.4282, 65.7143, 0, 0, 0, 0, -29.9995, 67.1428)
+"points": PackedVector2Array(0, 0, 0, 0, -29.9995, 67.1428, 0, 0, 0, 0, 488.572, 68.5714, 0, 0, 0, 0, -29.9995, 67.1428)
 }
-point_count = 4
+point_count = 3
 
 [node name="WorldTutorial" type="Node2D"]
 process_mode = 1
@@ -22,7 +23,16 @@ process_mode = 1
 [node name="MovingPlatform" parent="Moving Platforms" instance=ExtResource("8_hn8f8")]
 position = Vector2(3027, 71)
 curve = SubResource("Curve2D_6tnwg")
+loop = false
 speed_scale = 0.2
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Skeleton" parent="Enemies" instance=ExtResource("8_0yn4d")]
+position = Vector2(1138, 133)
+
+[node name="Skeleton2" parent="Enemies" instance=ExtResource("8_0yn4d")]
+position = Vector2(1240, 133)
 
 [node name="TileMap" parent="." instance=ExtResource("3_tfd4b")]
 scale = Vector2(0.7, 0.7)
@@ -41,11 +51,97 @@ position = Vector2(164, 107)
 [node name="Flagpole" parent="." instance=ExtResource("6_mpyvf")]
 position = Vector2(4465, -88)
 
-[node name="CreditText2" parent="." instance=ExtResource("7_88tmb")]
-offset_left = 157.0
-offset_top = 99.0
-offset_right = 266.0
-offset_bottom = 139.0
+[node name="Texts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4465.0
+offset_top = -88.0
+offset_right = 4505.0
+offset_bottom = -48.0
+
+[node name="CreditText3" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -4170.0
+offset_top = 133.961
+offset_right = -4061.0
+offset_bottom = 173.961
 theme_override_font_sizes/normal_font_size = 8
-text = "Press Space to 
-jump and double jump"
+text = "Press Space twice to
+double jump "
+
+[node name="CreditText2" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -4309.0
+offset_top = 180.961
+offset_right = -4200.0
+offset_bottom = 220.961
+theme_override_font_sizes/normal_font_size = 8
+text = "Press Space to jump"
+
+[node name="CreditText4" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -3911.0
+offset_top = 191.961
+offset_right = -3802.0
+offset_bottom = 231.961
+theme_override_font_sizes/normal_font_size = 8
+text = ":( try again"
+
+[node name="CreditText5" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -3640.0
+offset_top = 175.961
+offset_right = -3531.0
+offset_bottom = 215.961
+theme_override_font_sizes/normal_font_size = 8
+text = "press shift to slide dash"
+
+[node name="CreditText6" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -3145.0
+offset_top = 174.961
+offset_right = -3036.0
+offset_bottom = 214.961
+theme_override_font_sizes/normal_font_size = 8
+text = "hold c to crouch"
+
+[node name="CreditText8" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -2769.0
+offset_top = 168.961
+offset_right = -2660.0
+offset_bottom = 208.961
+theme_override_font_sizes/normal_font_size = 8
+text = "that's it, have fun! "
+
+[node name="CreditText7" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -3454.0
+offset_top = 173.961
+offset_right = -3345.0
+offset_bottom = 213.961
+theme_override_font_sizes/normal_font_size = 8
+text = "left click to attack! "
+
+[node name="CreditText9" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+offset_left = -1552.0
+offset_top = 117.961
+offset_right = -1443.0
+offset_bottom = 157.961
+theme_override_font_sizes/normal_font_size = 8
+text = "wait! 
+There's a platform coming... "
+
+[node name="CreditText10" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+anchor_left = 197.0
+anchor_top = -6.87305
+anchor_right = 197.0
+anchor_bottom = -6.87305
+offset_left = -8125.0
+offset_top = 242.922
+offset_right = -8016.0
+offset_bottom = 282.922
+theme_override_font_sizes/normal_font_size = 8
+text = "almost there... "
