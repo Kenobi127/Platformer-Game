@@ -15,10 +15,10 @@ func _ready():
 func _process(delta):
 	if clear == false:
 		timerValue = ceil(timer.time_left)
-		timerLabel.text = str(timerValue)
+		timerLabel.text = str(10000 - timerValue)
 
 func return_timer_value():
-	return 300 - timerValue
+	return 10000 - timerValue
 
 func stop_timer():
 	clear = true

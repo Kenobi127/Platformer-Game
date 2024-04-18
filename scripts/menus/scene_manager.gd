@@ -40,7 +40,7 @@ func load_scene(scene_path):
 	add_child(current_scene)
 	
 	#timer for each level
-	if current_scene.name != "Menu":
+	if current_scene.name != "Menu" && current_scene.name != "CreditsCanvas":
 		timer_screen = preload("res://scenes/other/timer_scene.tscn").instantiate()
 		add_child(timer_screen)
 	else:

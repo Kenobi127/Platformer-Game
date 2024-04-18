@@ -13,16 +13,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Timer" type="Timer" parent="TimerControl"]
-wait_time = 300.0
+wait_time = 10000.0
 
 [node name="TimerLabel" type="Label" parent="TimerControl"]
 layout_mode = 0
-offset_left = 290.0
-offset_top = 3.0
-offset_right = 380.0
-offset_bottom = 26.0
+offset_left = 9.0
+offset_top = 160.0
+offset_right = 99.0
+offset_bottom = 183.0
 theme = ExtResource("2_dp2kg")
-theme_override_colors/font_color = Color(0.32549, 0.4, 0, 1)
+theme_override_colors/font_color = Color(0, 0.52549, 0.564706, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
-text = "300"
+text = "0
+"
