@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvbx1ipictd52"]
+
+[ext_resource type="Script" path="res://scripts/timer_scene.gd" id="1_21mtl"]
+[ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_dp2kg"]
+
+[node name="timer_scene" type="CanvasLayer"]
+script = ExtResource("1_21mtl")
+
+[node name="TimerControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="TimerControl"]
+wait_time = 300.0
+
+[node name="TimerLabel" type="Label" parent="TimerControl"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 3.0
+offset_right = 380.0
+offset_bottom = 26.0
+theme = ExtResource("2_dp2kg")
+theme_override_colors/font_color = Color(0.32549, 0.4, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "300"
