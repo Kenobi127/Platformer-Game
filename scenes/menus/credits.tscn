@@ -104,10 +104,10 @@ metadata/_edit_use_anchors_ = true
 [node name="NameText" type="RichTextLabel" parent="Credits"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.522727
-anchor_right = 0.5
-anchor_bottom = 0.522727
+anchor_left = 0.50625
+anchor_top = 0.542208
+anchor_right = 0.50625
+anchor_bottom = 0.542208
 offset_left = -126.0
 offset_top = -54.5
 offset_right = 126.0
@@ -120,12 +120,12 @@ theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[center]
 Mateo Lopez Moncaleano
-Jaelin Mckethan
-Kiriti Vundavilli
-Natalie Mertz
+Angel Vazquez
 Brent Yelle
+Jaelin Mckethan
 Joseph Mego
-Angel Vazquez"
+Kiriti Vundavilli
+Natalie Mertz"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="Credits"]
