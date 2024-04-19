@@ -66,6 +66,9 @@ point_count = 3
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
+[node name="Flagpole" parent="Moving Platforms" instance=ExtResource("7_vxsqy")]
+position = Vector2(3951, -29)
+
 [node name="MovingPlatform8" parent="Moving Platforms" instance=ExtResource("8_mw6sn")]
 position = Vector2(3833, 40)
 curve = SubResource("Curve2D_j68nf")
@@ -201,6 +204,3 @@ transform = Transform2D(1, 0, 0, 1, 64, 40)
 
 [node name="Player" parent="." instance=ExtResource("6_nfhl8")]
 position = Vector2(164, 107)
-
-[node name="Flagpole" parent="." instance=ExtResource("7_vxsqy")]
-position = Vector2(3951, -29)

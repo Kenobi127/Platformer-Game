@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://stcotgo5a86a"]
+
+[ext_resource type="Texture2D" uid="uid://r4k38of3yeh" path="res://assets/textures/enemies/skeleton1.0/skeleton_idle_new.png" id="1_tqfcf"]
+
+[node name="SkeletonMap" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -16)
+texture = ExtResource("1_tqfcf")
+hframes = 11

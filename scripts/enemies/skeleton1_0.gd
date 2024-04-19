@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var anim = $AnimationPlayer
 @onready var player: Node2D
+var instance_id = 0
 var gem_scene = preload("res://scenes/other/gem.tscn")
 
 
@@ -19,17 +20,21 @@ var can_hurt: bool = false
 var is_hurt: bool = false
 var lives: int = 1
 
+signal position_changed(Vector2)
+signal destroyed(int)
+
 
 var debug = "not set"
 
-func _ready():
+func _ready() -> void:
 	lives = max_lives
+	instance_id = get_instance_id()
 	for node in get_parent().get_parent().get_children():
 		if node.name == "Player":
 			player = node
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	#print("lives: ", lives, " ", debug, ", is hurt ", is_hurt, ", is chasing ", is_chasing, ", is attacking ", is_attacking)
 	if is_on_floor() && !is_chasing && !is_attacking && !is_hurt && !can_hurt:
 		velocity.x = normal_speed * direction
@@ -51,7 +56,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+func _process(delta: float) -> void:
+	emit_signal("position_changed", global_position, instance_id)
+	
 
 func _on_detection_area_body_entered(body):
 	if !is_attacking && is_on_floor() && !is_hurt:
@@ -111,8 +118,8 @@ func back_to_normal():
 	is_chasing = false
 
 func die():
-	# spawn a collectable gem on death
 	spawn_gem()
+	emit_signal("destroyed", instance_id)
 	queue_free()
 
 func spawn_gem():

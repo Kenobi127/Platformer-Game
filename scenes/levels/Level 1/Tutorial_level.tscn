@@ -21,6 +21,9 @@ process_mode = 1
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
+[node name="Flagpole" parent="Moving Platforms" instance=ExtResource("6_mpyvf")]
+position = Vector2(4402, -88)
+
 [node name="MovingPlatform" parent="Moving Platforms" instance=ExtResource("8_hn8f8")]
 position = Vector2(3027, 71)
 curve = SubResource("Curve2D_6tnwg")
@@ -68,9 +71,6 @@ transform = Transform2D(1, 0, 0, 1, 64, 40)
 
 [node name="Player" parent="." instance=ExtResource("6_1mrfq")]
 position = Vector2(164, 107)
-
-[node name="Flagpole" parent="." instance=ExtResource("6_mpyvf")]
-position = Vector2(4402, -88)
 
 [node name="Texts" type="Control" parent="."]
 layout_mode = 3
