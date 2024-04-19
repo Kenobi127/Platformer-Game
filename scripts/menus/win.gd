@@ -28,4 +28,5 @@ func _on_next_button_pressed():
 		SceneManager.load_scene("res://scenes/menus/credits.tscn")
 		$Win/HBoxContainer/NextButton.text = "Next Level"
 		
+	get_tree().paused = false
 	hide()

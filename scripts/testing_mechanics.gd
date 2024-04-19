@@ -7,5 +7,4 @@ func _process(delta: float) -> void:
 		var skeleton = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn").instantiate()
 		skeleton.position = Vector2(randi_range(250, 500), 0)
 		$Enemies.add_child(skeleton)
-		
-		
+

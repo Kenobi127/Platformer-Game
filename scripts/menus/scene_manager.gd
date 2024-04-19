@@ -31,7 +31,7 @@ func spawn_gem():
 	# Determine the direction based on the gem's initial position
 	var direction = Vector2.ZERO
 	get_parent().add_child(gem)
-	gem.position = Vector2(40, 0)
+	gem.position = Vector2(45, 100)
 	
 
 func _process(delta):
@@ -48,10 +48,8 @@ func load_scene(scene_path):
 	# Unload the current scene if there is one
 	if current_scene != null:
 		current_scene.queue_free()
-	
 	# Load the new scene
 	current_scene = load(scene_path).instantiate()
-	#print(current_scene)
 	add_child(current_scene)
 	
 	if current_scene.name == "Menu":

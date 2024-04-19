@@ -21,12 +21,10 @@ func _input(event):
 	# Check if esc is pressed and swap paused state
 	if event.is_action_pressed("pause") && !SceneManager.win_screen.visible && SceneManager.current_scene.name!="Menu" && SceneManager.current_scene.name!="CreditsCanvas":
 		$PauseControl/ButtonPressed.play()
-		if pause == false:
-			pause = true
+		if get_tree().paused == false:
 			get_tree().paused = true
 			show()
 		else:
-			pause = false
 			get_tree().paused = false
 			hide()
 

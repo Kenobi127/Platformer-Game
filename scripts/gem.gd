@@ -10,19 +10,15 @@ var color = Color(0, 0, 0, 0)
 
 @onready var particles: GPUParticles2D = $GPUParticles2D
 
-
-var t: SceneTreeTimer
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# set off particles
 	particles.emitting = true
-	# set position to random
 	$Timer.start()
 	$Timer.timeout.connect(_on_timer_timeout)
-	# change the type of gem
 	
-	random_weight = randi_range(1, total_weights)  #generate a random weight
+	#generate a random weight
+	random_weight = randi_range(1, total_weights)  
 	#this formula does the inverse of finding the total weights
 	value = type_gems+1 - ceili((-1 + sqrt(1 + 8 * random_weight)) / 2) 
 	

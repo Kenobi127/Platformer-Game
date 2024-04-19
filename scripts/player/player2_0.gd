@@ -153,10 +153,10 @@ func jump():
 	jump_num -= 1
 
 func slide():
-	if $Timer.time_left==0:
+	if $SlideTimer.time_left==0:
 		cur_state = states.SLIDE
 		anim.play("slide")
-		$Timer.start()
+		$SlideTimer.start()
 
 func attack():
 	can_move = false
@@ -392,12 +392,13 @@ func respawn() -> void:
 	velocity = Vector2(0, 0)
 
 func hurt_player():
-	if anim.current_animation!="hurt" && anim.current_animation!="death":
+	if $Invincibility.time_left==0 && anim.current_animation!="hurt" && anim.current_animation!="death":
 		can_move = false
 		is_jumping = false
 		velocity = Vector2(0, 0)
 		cur_state = states.HURT
 		cur_lives -= 1
+		$Invincibility.start()
 		if cur_lives < 1: 	#death
 			$Death.play()
 			anim.play("death") 

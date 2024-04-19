@@ -8,7 +8,7 @@
 bounce = 0.64
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvocs"]
-size = Vector2(3.82873, 3.85161)
+size = Vector2(5.10497, 3.85161)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5pmb"]
 radius = 4.0
@@ -44,7 +44,9 @@ collision_mode = 2
 [node name="Gem" type="RigidBody2D"]
 position = Vector2(-4.3052e-10, 1)
 collision_layer = 8
+collision_priority = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_0to8r")
+gravity_scale = 0.5
 script = ExtResource("1_vbmkp")
 
 [node name="Timer" type="Timer" parent="."]
@@ -58,18 +60,18 @@ texture = ExtResource("2_h7ird")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(4.3052e-10, -20)
+position = Vector2(-1.03878e-07, -19.5)
 scale = Vector2(0.78355, 0.778154)
 shape = SubResource("RectangleShape2D_wvocs")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollectablePickupArea" type="Area2D" parent="."]
 visible = false
-collision_layer = 5
-collision_mask = 2
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectablePickupArea"]
-position = Vector2(0, -20)
+position = Vector2(0, -19.5)
 shape = SubResource("CircleShape2D_t5pmb")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
