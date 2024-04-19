@@ -8,12 +8,12 @@ var total_weights = (type_gems * (type_gems + 1)) / 2  # Example total weights
 var random_weight
 var color = Color(0, 0, 0, 0)
 
-@onready var particles: GPUParticles2D = $GPUParticles2D
+#@onready var particles: GPUParticles2D = $GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# set off particles
-	particles.emitting = true
+	#particles.emitting = true
 	$Timer.start()
 	$Timer.timeout.connect(_on_timer_timeout)
 	

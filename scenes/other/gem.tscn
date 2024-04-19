@@ -50,7 +50,7 @@ gravity_scale = 0.5
 script = ExtResource("1_vbmkp")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.85098, 0, 0.607843, 1)

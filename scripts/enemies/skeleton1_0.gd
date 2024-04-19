@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var player: Node2D
 var instance_id = 0
+var hurt_sounds: = []
 var gem_scene = preload("res://scenes/other/gem.tscn")
 
 
@@ -29,6 +30,11 @@ var debug = "not set"
 func _ready() -> void:
 	lives = max_lives
 	instance_id = get_instance_id()
+	hurt_sounds.append(preload("res://assets/sounds/enemies/skeleton/bones1.wav"))
+	hurt_sounds.append(preload("res://assets/sounds/enemies/skeleton/bones2.wav"))
+	hurt_sounds.append(preload("res://assets/sounds/enemies/skeleton/bones3.wav"))
+	hurt_sounds.append(preload("res://assets/sounds/enemies/skeleton/bones4.wav"))
+	hurt_sounds.append(preload("res://assets/sounds/enemies/skeleton/bones5.wav"))
 	for node in get_parent().get_parent().get_children():
 		if node.name == "Player":
 			player = node
@@ -101,14 +107,15 @@ func hurt(amount):
 	lives -= amount
 	is_hurt = true
 	velocity = Vector2(0,0)
-	if position.x < player.position.x:
-		position.x += -5
-	else:
-		position.x += 5
+	$SkeletonHurt.set_stream(hurt_sounds[randi_range(0, 4)])
 	
 	if lives<1:
 		anim.play("death")
 	else:
+		if position.x < player.position.x:
+			position.x += -5
+		else:
+			position.x += 5
 		anim.stop(true)
 		anim.play("hurt")
 
