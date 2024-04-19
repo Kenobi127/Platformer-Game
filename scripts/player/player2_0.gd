@@ -379,7 +379,8 @@ func hurt_function(delta) -> void:
 			cur_state = states.CROUCHING
 		else:
 			cur_state = states.IDLE
-			
+	else:
+		velocity.y += get_gravity() * delta
 
 
 
@@ -393,6 +394,7 @@ func respawn() -> void:
 func hurt_player():
 	if anim.current_animation!="hurt" && anim.current_animation!="death":
 		can_move = false
+		is_jumping = false
 		velocity = Vector2(0, 0)
 		cur_state = states.HURT
 		cur_lives -= 1
@@ -415,7 +417,8 @@ func _on_attack_area_body_entered(body):
 			body.hurt(2.5) 
 
 
-func pick_up_collectable(collectable):
-	collectable.queue_free()
-	# do whatever, add to score, etc.
+func pick_up_collectable(gems):
+	SceneManager.total_gems += gems
+	$gem_pickup.play()
+	#print(gems)
 

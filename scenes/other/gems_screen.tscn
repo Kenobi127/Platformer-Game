@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://fgxyistduvdi"]
+
+[ext_resource type="Script" path="res://scripts/gems_screen.gd" id="1_db0q2"]
+[ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_pua7o"]
+
+[node name="GemsScreen" type="CanvasLayer"]
+script = ExtResource("1_db0q2")
+
+[node name="GemsControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GemsLabel" type="Label" parent="GemsControl"]
+layout_mode = 0
+offset_left = 288.0
+offset_right = 378.0
+offset_bottom = 23.0
+theme = ExtResource("2_pua7o")
+theme_override_colors/font_color = Color(0.0509804, 0.513726, 0.615686, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "0
+"

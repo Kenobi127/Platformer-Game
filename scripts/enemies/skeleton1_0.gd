@@ -2,16 +2,17 @@ extends CharacterBody2D
 
 
 #normal speed is 20 and chase is 35
-@export var normal_speed: float = randf_range(16, 24)
 @export var chase_speed: float = 35
 @export var direction: float = 1
 @export var max_lives: int = 5
 
 @onready var anim = $AnimationPlayer
-@onready var player: Player
+@onready var player: Node2D
+var gem_scene = preload("res://scenes/other/gem.tscn")
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var normal_speed: float = randf_range(16, 24)
 var is_chasing: bool = false
 var is_attacking: bool = false
 var can_hurt: bool = false
@@ -26,7 +27,7 @@ func _ready():
 	for node in get_parent().get_parent().get_children():
 		if node.name == "Player":
 			player = node
-			
+
 
 func _physics_process(delta):
 	#print("lives: ", lives, " ", debug, ", is hurt ", is_hurt, ", is chasing ", is_chasing, ", is attacking ", is_attacking)
@@ -55,7 +56,7 @@ func _physics_process(delta):
 func _on_detection_area_body_entered(body):
 	if !is_attacking && is_on_floor() && !is_hurt:
 		is_chasing = true
-		chase_player(body)
+		chase_player(player)
 
 
 func _on_detection_area_body_exited(body):
@@ -114,26 +115,9 @@ func die():
 	spawn_gem()
 	queue_free()
 
-
-
-# Pre-cache the collectable scene
-var collectable_scene = preload("res://scenes/other/collectable.tscn")
-
 func spawn_gem():
-	# Instantiate the pre-cached collectable scene
-	var gem = collectable_scene.instantiate()
-	# Determine the direction based on the gem's initial position
-	var direction = Vector2.ZERO
-	if position.x < 0:
-		direction = Vector2(-1, -2)
-	else:
-		direction = Vector2(1, -2)
-		gem.direction = direction
-
-	# Add the gem as a child of the parent node
+	var gem = gem_scene.instantiate()
 	get_parent().add_child(gem)
-
-	# Set the gem's position
 	gem.position = position
 
 

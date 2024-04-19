@@ -1,13 +1,12 @@
 extends CanvasLayer
 
-@onready var timerText = $Win/TimerText
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 
 func _process(delta):
-	timerText.text = "Time: " + str(SceneManager.time_taken) + " sec"
+	$Win/TimerText.text = "Time: " + str(SceneManager.time_taken) + " sec"
+	$Win/TotalGems.text = "Total Gems: " + str(SceneManager.total_gems)
 
 func _on_main_button_pressed():
 	SceneManager.load_scene("res://scenes/menus/menu.tscn")
