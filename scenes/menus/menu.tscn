@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bpt2hb1tomxi2"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu.gd" id="1_q7gmv"]
+[ext_resource type="AudioStream" uid="uid://b30vvhgutn28u" path="res://assets/sounds/Skylighter_Menu_Uptempo.mp3" id="2_7t5dq"]
 [ext_resource type="Script" path="res://scripts/paralax_clouds.gd" id="2_lkhie"]
 [ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="3_14xbp"]
 [ext_resource type="Texture2D" uid="uid://b46y3f5j5fnpr" path="res://assets/textures/backgrounds/CloudsBack.png" id="3_pw80o"]
@@ -9,7 +10,6 @@
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="4_ylmq2"]
 [ext_resource type="Texture2D" uid="uid://c2w03t87biyik" path="res://assets/textures/backgrounds/MountainsBack.png" id="5_i40om"]
 [ext_resource type="Texture2D" uid="uid://cdakvk8835pgu" path="res://assets/textures/backgrounds/MountainsFront.png" id="6_dr4q5"]
-[ext_resource type="AudioStream" uid="uid://btc5kqyoeupqn" path="res://assets/sounds/music_menu_CREDIT_Trevor_Kentz.mp3" id="6_ulpo8"]
 [ext_resource type="PackedScene" uid="uid://dlnxc7wabtpow" path="res://scenes/other/button.tscn" id="10_mffp8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shns0"]
@@ -178,8 +178,8 @@ Button/styles/pressed = SubResource("StyleBoxFlat_fwq61")
 script = ExtResource("1_q7gmv")
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ulpo8")
-volume_db = -25.0
+stream = ExtResource("2_7t5dq")
+volume_db = -10.0
 autoplay = true
 
 [node name="SkyBackground" type="ParallaxBackground" parent="."]

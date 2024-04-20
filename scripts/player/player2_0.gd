@@ -157,6 +157,7 @@ func slide():
 		cur_state = states.SLIDE
 		anim.play("slide")
 		$SlideTimer.start()
+		$Slide.play()
 
 func attack():
 	can_move = false

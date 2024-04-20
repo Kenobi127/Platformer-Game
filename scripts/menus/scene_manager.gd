@@ -1,16 +1,20 @@
 # SceneManager.gd
-
 extends Node
+
+
+@onready var gem_particles_scene = preload("res://scenes/other/gem_gpu_particles_2d.tscn")
+@onready var gem_scene = preload("res://scenes/other/gem.tscn")
+@onready var skeleton_scene = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn")
 
 var current_scene = null
 var pause_menu = null
 var win_screen = null
-var timer_screen = null
-var total_gems_screen = null
+var screen_timer = null
+var screen_total_gems = null
 var time_taken = 0
 var total_gems = 0
 
-func _ready():
+func _ready() -> void:
 	# Load the initial scene (menu scene)
 	load_scene("res://scenes/menus/menu.tscn")
 
@@ -23,28 +27,21 @@ func _ready():
 	win_screen = preload("res://scenes/menus/win.tscn").instantiate()
 	add_child(win_screen)
 	win_screen.hide()
+
+
+func _process(_delta: float) -> void:
+	return
+	#if Input.is_action_just_pressed("debug"):
+		#spawn_gem()
+		#SceneManager.finish_level()
 	
-var gem_scene = preload("res://scenes/other/gem.tscn")
-func spawn_gem():
-	# Instantiate the pre-cached collectable scene
-	var gem = gem_scene.instantiate()
-	# Determine the direction based on the gem's initial position
-	var direction = Vector2.ZERO
+func spawn_gem() -> void:
+	var gem = SceneManager.gem_scene.instantiate()
 	get_parent().add_child(gem)
 	gem.position = Vector2(45, 100)
-	
-
-func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		pass
-		#SceneManager.finish_level()
-		#spawn_gem()
-		
-	if timer_screen != null:
-		time_taken = timer_screen.return_timer_value()
 
 
-func load_scene(scene_path):
+func load_scene(scene_path) -> void:
 	# Unload the current scene if there is one
 	if current_scene != null:
 		current_scene.queue_free()
@@ -52,29 +49,28 @@ func load_scene(scene_path):
 	current_scene = load(scene_path).instantiate()
 	add_child(current_scene)
 	
-	if current_scene.name == "Menu":
-		total_gems = 0
-	
-	#timer for each level
+	#timer and gems for each level
 	if current_scene.name != "Menu" && current_scene.name != "CreditsCanvas":
-		timer_screen = preload("res://scenes/other/timer_scene.tscn").instantiate()
-		add_child(timer_screen)
-		total_gems_screen = preload("res://scenes/other/gems_screen.tscn").instantiate()
-		add_child(total_gems_screen)
+		$Background.play()
+		screen_timer = preload("res://scenes/other/timer_scene.tscn").instantiate()
+		add_child(screen_timer)
+		screen_total_gems = preload("res://scenes/other/gems_screen.tscn").instantiate()
+		add_child(screen_total_gems)
 	else:
-		if timer_screen != null:
-			timer_screen.queue_free()
-		if total_gems_screen != null:
-			total_gems_screen.queue_free()
+		$Background.stop()
+		if screen_timer != null:
+			screen_timer.queue_free()
+		if screen_total_gems != null:
+			screen_total_gems.queue_free()
 
-func load_credits():
+func load_credits() -> void:
 	load_scene("res://scenes/menus/credits.tscn")
 	
 
-func start_game():
+func start_game() -> void:
 	load_scene("res://scenes/levels/Level 1/Tutorial_level.tscn")
 
-func quit_game():
+func quit_game() -> void:
 	get_tree().quit()
 
 
@@ -82,8 +78,8 @@ func finish_level():
 	if win_screen.visible == false:
 		win_screen.show_win_screen()
 	
-	if timer_screen != null:
-		timer_screen.stop_timer()
-		timer_screen.queue_free()
-	if total_gems_screen != null:
-		total_gems_screen.queue_free()
+	if screen_timer != null:
+		screen_timer.stop_timer()
+		screen_timer.queue_free()
+	if screen_total_gems != null:
+		screen_total_gems.queue_free()

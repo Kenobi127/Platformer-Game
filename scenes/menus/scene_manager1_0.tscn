@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4kd208cta7mw"]
+[gd_scene load_steps=3 format=3 uid="uid://b4kd208cta7mw"]
 
 [ext_resource type="Script" path="res://scripts/menus/scene_manager.gd" id="1_8r6d1"]
+[ext_resource type="AudioStream" uid="uid://dorjj4qcfo211" path="res://assets/sounds/Skylighter_Menu_Uptempo2.mp3" id="2_nyvtl"]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_8r6d1")
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nyvtl")
+volume_db = -25.0

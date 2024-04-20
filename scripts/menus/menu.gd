@@ -1,9 +1,11 @@
 extends Node2D
 
+func _ready() -> void:
+	SceneManager.total_gems = 0
+
 func _on_start_game_pressed():
 	# Call the start_game function in the scene manager
 	SceneManager.start_game()
-
 
 func _on_credits_view_pressed():
 	# Call the view_credits function in the scene manager

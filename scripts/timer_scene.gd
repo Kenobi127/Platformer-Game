@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if clear == false:
 		timerValue = ceil(timer.time_left)
 		timerLabel.text = str(10000 - timerValue)

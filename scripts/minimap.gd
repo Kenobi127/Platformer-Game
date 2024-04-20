@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@onready var camera = $SubViewportContainer/SubViewport/Camera2D
 @onready var sub_viewport = $SubViewportContainer/SubViewport
 @onready var player: Node2D 
 var enemy_sprites = {}
@@ -33,7 +32,7 @@ func _ready():
 				enemy.connect("destroyed", _on_enemy_destroyed)
 
 func _process(delta):
-	camera.position = player.position
+	$SubViewportContainer/SubViewport/Camera2D.position = player.position
 	$SubViewportContainer/SubViewport/PlayerPos.position = player.position
 
 func _on_enemy_position_changed(pos, enemy_instance_id):

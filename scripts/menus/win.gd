@@ -4,7 +4,7 @@ extends CanvasLayer
 func _ready():
 	hide()
 
-func _process(delta):
+func _process(_delta):
 	$Win/TimerText.text = "Time: " + str(SceneManager.time_taken) + " sec"
 	$Win/TotalGems.text = "Total Gems: " + str(SceneManager.total_gems)
 

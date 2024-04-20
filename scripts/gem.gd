@@ -1,37 +1,36 @@
 extends RigidBody2D
 
 # expiry time in seconds	
-var expiryTime = 5 
-var value = 1
-var type_gems = 5
-var total_weights = (type_gems * (type_gems + 1)) / 2  # Example total weights
-var random_weight
+var value: int = 0
+var type_gems: int = 5 #max nun of gems
+var total_weights: int = (type_gems*(type_gems+1))/2  # Example total weights
+var random_weight: int
 var color = Color(0, 0, 0, 0)
-
-#@onready var particles: GPUParticles2D = $GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# set off particles
-	#particles.emitting = true
+	# set particles
+	add_child(SceneManager.gem_particles_scene.instantiate())
+	$GemGPUParticles2D.emitting = true
+
 	$Timer.start()
 	$Timer.timeout.connect(_on_timer_timeout)
 	
 	#generate a random weight
-	random_weight = randi_range(1, total_weights)  
+	random_weight = randi_range(1, total_weights)
 	#this formula does the inverse of finding the total weights
 	value = type_gems+1 - ceili((-1 + sqrt(1 + 8 * random_weight)) / 2) 
 	
 	if value == 1: #green
-		color = Color(0.498039, 1, 0, 1)
+		color = Color(0.5, 1, 0, 1)
 	elif value == 2: #blue
-		color = Color(0.498039, 1, 0.831373, 1)
+		color = Color(0.5, 1, 0.8, 1)
 	elif value == 3: #light purple
-		color = Color(1, 0.353, 0.765, 1)
+		color = Color(1, 0.3, 1, 1)
 	elif value == 4: #purple
-		color = Color(0.851, 0, 0.608, 1)
+		color = Color(0.8, 0, 0.6, 1)
 	elif value == 5: #red
-		color = Color(1, 0, 0, 1)
+		color = Color(1.5, 0, 0, 1)
 		
 	$Sprite2D.self_modulate = color
 
