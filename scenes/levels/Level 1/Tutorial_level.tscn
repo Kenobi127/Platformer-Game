@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ut4hxqgw3iys"]
+[gd_scene load_steps=11 format=3 uid="uid://ut4hxqgw3iys"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_tfd4b"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_236wj"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_1mrfq"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_mpyvf"]
 [ext_resource type="PackedScene" uid="uid://b4uds3qkjmj0a" path="res://scenes/other/text_label.tscn" id="7_88tmb"]
-[ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="8_0yn4d"]
+[ext_resource type="PackedScene" uid="uid://dqx1lqc1j3uyy" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="8_0yn4d"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="8_hn8f8"]
+[ext_resource type="PackedScene" uid="uid://vhw1q3yyyogo" path="res://scenes/other/inputDisplay.tscn" id="9_0g4vi"]
 
 [sub_resource type="Curve2D" id="Curve2D_6tnwg"]
 _data = {
@@ -66,17 +67,19 @@ offset_top = 133.961
 offset_right = -4061.0
 offset_bottom = 173.961
 theme_override_font_sizes/normal_font_size = 8
-text = "Press Space twice to
+text = "Press    twice to
 double jump "
 
 [node name="CreditText2" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
+anchor_left = 0.475
+anchor_right = 0.475
 offset_left = -4309.0
 offset_top = 180.961
 offset_right = -4200.0
 offset_bottom = 220.961
 theme_override_font_sizes/normal_font_size = 8
-text = "Press Space to jump"
+text = "Press    to jump"
 
 [node name="CreditText4" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
@@ -94,7 +97,7 @@ offset_top = 175.961
 offset_right = -3531.0
 offset_bottom = 215.961
 theme_override_font_sizes/normal_font_size = 8
-text = "press shift to slide dash"
+text = "press     to slide dash"
 
 [node name="CreditText6" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
@@ -103,7 +106,7 @@ offset_top = 174.961
 offset_right = -3036.0
 offset_bottom = 214.961
 theme_override_font_sizes/normal_font_size = 8
-text = "hold c to crouch"
+text = "hold    to crouch"
 
 [node name="CreditText8" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
@@ -116,12 +119,14 @@ text = "that's it, have fun! "
 
 [node name="CreditText7" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
+anchor_left = 0.85
+anchor_right = 0.85
 offset_left = -3454.0
 offset_top = 173.961
 offset_right = -3345.0
 offset_bottom = 213.961
 theme_override_font_sizes/normal_font_size = 8
-text = "left click to attack! "
+text = " to attack! "
 
 [node name="CreditText9" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
@@ -145,3 +150,21 @@ offset_right = -8016.0
 offset_bottom = 282.922
 theme_override_font_sizes/normal_font_size = 8
 text = "almost there... "
+
+[node name="InputDisplay" parent="." instance=ExtResource("9_0g4vi")]
+position = Vector2(200, 118)
+
+[node name="InputDisplay2" parent="." instance=ExtResource("9_0g4vi")]
+position = Vector2(340, 71)
+
+[node name="InputDisplay3" parent="." instance=ExtResource("9_0g4vi")]
+position = Vector2(871, 113)
+action = "slide"
+
+[node name="InputDisplay4" parent="." instance=ExtResource("9_0g4vi")]
+position = Vector2(1041, 111)
+action = "attack"
+
+[node name="InputDisplay5" parent="." instance=ExtResource("9_0g4vi")]
+position = Vector2(1361, 112)
+action = "crouch"

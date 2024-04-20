@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs2ynknivuqov"]
+[gd_scene load_steps=12 format=3 uid="uid://cs2ynknivuqov"]
 
 [ext_resource type="Script" path="res://scripts/testing_mechanics.gd" id="1_3fuar"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="1_rpmpf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1n4druoaeqqs" path="res://assets/textures/levels/measuring_background.png" id="6_0kpdo"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="7_u0kyo"]
 [ext_resource type="PackedScene" uid="uid://j6b1e4kmftwp" path="res://scenes/character bodies/enemies/staticspike.tscn" id="8_uqcxf"]
+[ext_resource type="PackedScene" uid="uid://drfl1imtkndvr" path="res://scenes/other/buttonSign.tscn" id="10_0v62g"]
 [ext_resource type="PackedScene" uid="uid://dukg1epfj1e33" path="res://scenes/other/rich_text_label.tscn" id="10_rj2ad"]
 
 [sub_resource type="Curve2D" id="Curve2D_3d1iv"]
@@ -61,3 +62,6 @@ offset_top = 133.0
 offset_right = 328.0
 offset_bottom = 173.0
 text = "Press y to spawn skeletons"
+
+[node name="ButtonSign" parent="." instance=ExtResource("10_0v62g")]
+position = Vector2(79, 130)

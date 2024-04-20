@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://drfl1imtkndvr"]
+
+[ext_resource type="Script" path="res://scenes/other/buttonSign.gd" id="1_51v1o"]
+[ext_resource type="Texture2D" uid="uid://chyriffj1b0pl" path="res://assets/textures/shared/ball.png" id="1_va7tr"]
+[ext_resource type="PackedScene" uid="uid://vhw1q3yyyogo" path="res://scenes/other/inputDisplay.tscn" id="2_0e2iv"]
+
+[node name="ButtonSign" type="Node2D"]
+z_index = -100
+script = ExtResource("1_51v1o")
+
+[node name="Ball2" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_va7tr")
+
+[node name="InputDisplay" parent="." instance=ExtResource("2_0e2iv")]
+position = Vector2(0, -11)
+scale = Vector2(0.5, 0.5)
