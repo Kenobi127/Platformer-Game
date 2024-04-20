@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgwmputi74r4m"]
+[gd_scene load_steps=21 format=3 uid="uid://dgwmputi74r4m"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_pjtbb"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_efxjs"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_bfybs"]
 [ext_resource type="PackedScene" uid="uid://nwvsxdmblq2a" path="res://scenes/character bodies/enemies/skeleton1_0.tscn" id="7_143kd"]
 [ext_resource type="PackedScene" uid="uid://c5hogjs4gd025" path="res://scenes/levels/moving platforms/moving_platform1.tscn" id="8_b67ds"]
+[ext_resource type="PackedScene" uid="uid://j6b1e4kmftwp" path="res://scenes/character bodies/enemies/staticspike.tscn" id="8_m8yyf"]
 
 [sub_resource type="Curve2D" id="Curve2D_vks5d"]
 bake_interval = 200.0
@@ -82,6 +83,135 @@ _data = {
 point_count = 2
 
 [node name="World1_3" type="Node2D"]
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="StaticSpike" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1071, 77)
+rotation = -3.14159
+
+[node name="StaticSpike2" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1130, 21)
+rotation = -3.14159
+
+[node name="StaticSpike3" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1296, 11)
+rotation = 1.5708
+
+[node name="StaticSpike4" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1278, 0)
+
+[node name="StaticSpike5" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1258, 11)
+rotation = -1.5708
+
+[node name="StaticSpike6" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1399, 255)
+rotation = 1.5708
+
+[node name="StaticSpike7" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1653, 62)
+rotation = 1.0472
+
+[node name="StaticSpike8" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1595, 63)
+rotation = -1.0472
+
+[node name="StaticSpike9" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1322, -101)
+
+[node name="StaticSpike10" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1282, -179)
+
+[node name="StaticSpike11" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2303, -344)
+rotation = 1.74533
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticSpike12" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1954, -112)
+
+[node name="StaticSpike13" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1964, -112)
+
+[node name="StaticSpike14" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2011, -134)
+
+[node name="StaticSpike15" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2257, -101)
+
+[node name="StaticSpike16" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2301, -56)
+
+[node name="StaticSpike17" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2335, -22)
+
+[node name="StaticSpike18" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2429, 90)
+
+[node name="StaticSpike19" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2608, 251)
+rotation = 1.5708
+
+[node name="StaticSpike20" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(3092, -296)
+rotation = -0.349066
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticSpike21" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(3103, -298)
+
+[node name="StaticSpike22" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(3114, -297)
+rotation = 0.174533
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticSpike23" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(3269, 101)
+
+[node name="StaticSpike24" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(3218, 302)
+
+[node name="StaticSpike25" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(2504, 267)
+rotation = -3.14159
+scale = Vector2(1, 1)
+
+[node name="StaticSpike26" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(4071, -258)
+
+[node name="StaticSpike27" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(4191, -286)
+rotation = -1.5708
+
+[node name="StaticSpike28" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(990, 197)
+rotation = -1.5708
+
+[node name="StaticSpike29" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1021, 184)
+rotation = -1.5708
+
+[node name="StaticSpike30" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1105, 134)
+rotation = 1.5708
+
+[node name="StaticSpike31" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1030, 32)
+rotation = 3.14159
+
+[node name="StaticSpike32" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(988, 28)
+rotation = -1.5708
+
+[node name="StaticSpike33" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1262, 224)
+
+[node name="StaticSpike34" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1254, 224)
+
+[node name="StaticSpike35" parent="Spikes" instance=ExtResource("8_m8yyf")]
+position = Vector2(1245, 224)
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
@@ -211,6 +341,27 @@ position = Vector2(3894, -209)
 
 [node name="Skeleton18" parent="Enemies" instance=ExtResource("7_143kd")]
 position = Vector2(1205, -233)
+
+[node name="Skeleton19" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(1307, -183)
+
+[node name="Skeleton20" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(1120, -47)
+
+[node name="Skeleton21" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(2228, -375)
+
+[node name="Skeleton22" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(2596, -262)
+
+[node name="Skeleton23" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(3001, -49)
+
+[node name="Skeleton24" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(4395, -308)
+
+[node name="Skeleton25" parent="Enemies" instance=ExtResource("7_143kd")]
+position = Vector2(681, -107)
 
 [node name="TileMap" parent="." instance=ExtResource("3_pjtbb")]
 scale = Vector2(0.7, 0.7)

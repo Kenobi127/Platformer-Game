@@ -122,7 +122,7 @@ position = Vector2(2819, 303)
 position = Vector2(2872, 90)
 
 [node name="StaticSpike19" parent="Spikes" instance=ExtResource("1_wa877")]
-position = Vector2(3070, 337)
+position = Vector2(3072, 336)
 
 [node name="StaticSpike20" parent="Spikes" instance=ExtResource("1_wa877")]
 position = Vector2(3343, 236)
@@ -132,6 +132,15 @@ position = Vector2(3446, 381)
 
 [node name="StaticSpike22" parent="Spikes" instance=ExtResource("1_wa877")]
 position = Vector2(3516, 224)
+
+[node name="StaticSpike23" parent="Spikes" instance=ExtResource("1_wa877")]
+position = Vector2(2339, 123)
+
+[node name="StaticSpike24" parent="Spikes" instance=ExtResource("1_wa877")]
+position = Vector2(3082, 0)
+
+[node name="StaticSpike25" parent="Spikes" instance=ExtResource("1_wa877")]
+position = Vector2(3092, 0)
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
