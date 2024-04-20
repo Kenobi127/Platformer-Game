@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4kd208cta7mw"]
+[gd_scene load_steps=5 format=3 uid="uid://b4kd208cta7mw"]
 
 [ext_resource type="Script" path="res://scripts/menus/scene_manager.gd" id="1_8r6d1"]
 [ext_resource type="AudioStream" uid="uid://dorjj4qcfo211" path="res://assets/sounds/Skylighter_Menu_Uptempo2.mp3" id="2_nyvtl"]
+[ext_resource type="AudioStream" uid="uid://c0m7d3gbn07cc" path="res://assets/sounds/button_pressed.wav" id="3_ekmue"]
+[ext_resource type="AudioStream" uid="uid://b30vvhgutn28u" path="res://assets/sounds/Skylighter_Menu_Uptempo.mp3" id="4_eulsg"]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_8r6d1")
 
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eulsg")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
 [node name="Background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nyvtl")
-volume_db = -25.0
+volume_db = -20.0
+bus = &"Music"
+
+[node name="ButtonPressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ekmue")
+volume_db = -20.0
+bus = &"SFX"

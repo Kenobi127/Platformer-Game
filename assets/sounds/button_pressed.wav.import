@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c0m7d3gbn07cc"
-path="res://.godot/imported/game_pause.wav-96e2798e728b0f65de60626d779b8897.sample"
+path="res://.godot/imported/button_pressed.wav-52cacc981392cac896a368605d7fedd0.sample"
 
 [deps]
 
-source_file="res://assets/sounds/game_pause.wav"
-dest_files=["res://.godot/imported/game_pause.wav-96e2798e728b0f65de60626d779b8897.sample"]
+source_file="res://assets/sounds/button_pressed.wav"
+dest_files=["res://.godot/imported/button_pressed.wav-52cacc981392cac896a368605d7fedd0.sample"]
 
 [params]
 

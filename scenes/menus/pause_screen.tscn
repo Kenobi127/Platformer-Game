@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ixxnq7ysh7b1" path="res://assets/textures/levels/tileset0.png" id="1_psmre"]
 [ext_resource type="Script" path="res://scripts/menus/pause_screen.gd" id="1_vjt2f"]
 [ext_resource type="Theme" uid="uid://ccjdu7nrsjjwa" path="res://assets/fonts/font_theme.tres" id="2_ryr6l"]
+[ext_resource type="AudioStream" uid="uid://c0m7d3gbn07cc" path="res://assets/sounds/button_pressed.wav" id="3_3u8e0"]
 [ext_resource type="FontFile" uid="uid://bu638ev4rorqq" path="res://assets/fonts/ThaleahFat.ttf" id="3_lodyx"]
-[ext_resource type="AudioStream" uid="uid://c0m7d3gbn07cc" path="res://assets/sounds/game_pause.wav" id="5_h8i7w"]
 [ext_resource type="AudioStream" uid="uid://b6ngimp55rwy" path="res://assets/sounds/menu_select.wav" id="6_42wxf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4au6"]
@@ -189,12 +189,14 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65537, 1, 3, 65538, 65537, 3, 65539, 65537, 3, 65540, 65537, 3, 65541, 65537, 3, 65542, 65537, 3, 65543, 65537, 3, 65544, 65537, 3, 65545, 65537, 3, 65546, 65537, 3, 65547, 65537, 3, 65548, 65537, 3, 65549, 65537, 3, 65550, 65537, 3, 65551, 65537, 3, 65552, 65537, 3, 65553, 65537, 3, 65554, 131073, 3, 131073, 1, 4, 196609, 1, 4, 262145, 1, 4, 327681, 1, 4, 393217, 1, 4, 458753, 1, 4, 524289, 1, 4, 589825, 1, 5, 589842, 131073, 5, 524306, 131073, 4, 458770, 131073, 4, 393234, 131073, 4, 327698, 131073, 4, 262162, 131073, 4, 196626, 131073, 4, 131090, 131073, 4, 589826, 65537, 5, 589827, 65537, 5, 589828, 65537, 5, 589829, 65537, 5, 589830, 65537, 5, 589831, 65537, 5, 589832, 65537, 5, 589833, 65537, 5, 589834, 65537, 5, 589835, 65537, 5, 589836, 65537, 5, 589837, 65537, 5, 589838, 65537, 5, 589839, 65537, 5, 589840, 65537, 5, 589841, 65537, 5, 131074, 65537, 4, 131075, 65537, 4, 196611, 65537, 4, 196612, 65537, 4, 196613, 65537, 4, 262149, 65537, 4, 262150, 65537, 4, 262151, 65537, 4, 262152, 65537, 4, 327688, 65537, 4, 327689, 65537, 4, 327690, 65537, 4, 327691, 65537, 4, 327692, 65537, 4, 393228, 65537, 4, 393229, 65537, 4, 393230, 65537, 4, 458766, 65537, 4, 458767, 65537, 4, 458768, 65537, 4, 524304, 65537, 4, 524305, 65537, 4, 524303, 65537, 4, 524302, 65537, 4, 524301, 65537, 4, 524300, 65537, 4, 524299, 65537, 4, 524298, 65537, 4, 524297, 65537, 4, 524296, 65537, 4, 524295, 65537, 4, 458758, 65537, 4, 393222, 65537, 4, 327686, 65537, 4, 327685, 65537, 4, 327684, 65537, 4, 262148, 65537, 4, 262147, 65537, 4, 262146, 65537, 4, 196610, 65537, 4, 327682, 65537, 4, 393218, 65537, 4, 458754, 65537, 4, 524290, 65537, 4, 524291, 65537, 4, 458755, 65537, 4, 393219, 65537, 4, 327683, 65537, 4, 393220, 65537, 4, 458756, 65537, 4, 524292, 65537, 4, 524293, 65537, 4, 458757, 65537, 4, 393221, 65537, 4, 524294, 65537, 4, 327687, 65537, 4, 393223, 65537, 4, 458759, 65537, 4, 458760, 65537, 4, 393224, 65537, 4, 393225, 65537, 4, 458761, 65537, 4, 458762, 65537, 4, 393226, 65537, 4, 393227, 65537, 4, 458763, 65537, 4, 458764, 65537, 4, 458765, 65537, 4, 262157, 65537, 4, 196621, 65537, 4, 131085, 65537, 4, 131084, 65537, 4, 131083, 65537, 4, 131082, 65537, 4, 131081, 65537, 4, 131080, 65537, 4, 131079, 65537, 4, 131078, 65537, 4, 131077, 65537, 4, 131076, 65537, 4, 196614, 65537, 4, 196615, 65537, 4, 196616, 65537, 4, 196617, 65537, 4, 262153, 65537, 4, 262154, 65537, 4, 196618, 65537, 4, 196619, 65537, 4, 262155, 65537, 4, 262156, 65537, 4, 196620, 65537, 4, 131086, 65537, 4, 196622, 65537, 4, 262158, 65537, 4, 327694, 65537, 4, 327693, 65537, 4, 327695, 65537, 4, 262159, 65537, 4, 196623, 65537, 4, 131087, 65537, 4, 131088, 65537, 4, 196624, 65537, 4, 262160, 65537, 4, 327696, 65537, 4, 393232, 65537, 4, 393231, 65537, 4, 393233, 65537, 4, 327697, 65537, 4, 262161, 65537, 4, 196625, 65537, 4, 131089, 65537, 4, 458769, 65537, 4)
 
 [node name="ButtonPressed" type="AudioStreamPlayer" parent="PauseControl"]
-stream = ExtResource("5_h8i7w")
-volume_db = -10.0
+stream = ExtResource("3_3u8e0")
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="BackToMenu" type="AudioStreamPlayer" parent="PauseControl"]
 stream = ExtResource("6_42wxf")
-volume_db = -20.0
+volume_db = -25.0
+bus = &"SFX"
 
 [node name="PauseText" type="RichTextLabel" parent="PauseControl"]
 layout_mode = 1
@@ -220,9 +222,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -77.0
-offset_top = -13.0
+offset_top = -10.0
 offset_right = 54.0
-offset_bottom = 13.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ryr6l")
@@ -239,9 +241,9 @@ anchor_top = 0.517
 anchor_right = 0.684
 anchor_bottom = 0.517
 offset_left = -6.88
-offset_top = -16.06
+offset_top = -13.06
 offset_right = 17.12
-offset_bottom = 7.94
+offset_bottom = 10.94
 focus_mode = 0
 
 [node name="ReturnTitle" type="Button" parent="PauseControl"]
@@ -253,9 +255,9 @@ anchor_top = 0.639
 anchor_right = 0.5
 anchor_bottom = 0.639
 offset_left = -106.0
-offset_top = -56.02
+offset_top = -55.02
 offset_right = 99.0
-offset_bottom = -32.02
+offset_bottom = -31.02
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_mw118")
@@ -289,15 +291,19 @@ offset_bottom = 142.0
 
 [node name="Music_Slider" type="HSlider" parent="PauseControl/VBoxContainer2"]
 layout_mode = 2
-max_value = 20.0
-value = 20.0
+max_value = 1.0
+step = 0.001
+value = 0.5
 
 [node name="SFX_Slider" type="HSlider" parent="PauseControl/VBoxContainer2"]
 layout_mode = 2
-max_value = 20.0
-value = 20.0
+max_value = 1.0
+step = 0.001
+value = 0.5
 
 [connection signal="toggled" from="PauseControl/FullChoice" to="." method="_on_full_choice_toggled"]
 [connection signal="pressed" from="PauseControl/ReturnTitle" to="." method="_on_return_title_pressed"]
+[connection signal="drag_started" from="PauseControl/VBoxContainer2/Music_Slider" to="." method="_on_music_slider_drag_started"]
 [connection signal="value_changed" from="PauseControl/VBoxContainer2/Music_Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_started" from="PauseControl/VBoxContainer2/SFX_Slider" to="." method="_on_sfx_slider_drag_started"]
 [connection signal="value_changed" from="PauseControl/VBoxContainer2/SFX_Slider" to="." method="_on_sfx_slider_value_changed"]

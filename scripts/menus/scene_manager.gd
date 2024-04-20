@@ -6,6 +6,10 @@ extends Node
 @onready var gem_scene = preload("res://scenes/other/gem.tscn")
 @onready var skeleton_scene = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn")
 
+@onready var button_sound = $ButtonPressed
+@onready var backround_music = $Background
+@onready var menu_music = $MenuMusic
+
 var current_scene = null
 var pause_menu = null
 var win_screen = null
@@ -30,10 +34,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	return
-	#if Input.is_action_just_pressed("debug"):
+	#return
+	if Input.is_action_just_pressed("debug"):
+		SceneManager.finish_level()
 		#spawn_gem()
-		#SceneManager.finish_level()
 	
 func spawn_gem() -> void:
 	var gem = SceneManager.gem_scene.instantiate()
@@ -51,13 +55,12 @@ func load_scene(scene_path) -> void:
 	
 	#timer and gems for each level
 	if current_scene.name != "Menu" && current_scene.name != "CreditsCanvas":
-		$Background.play()
+		backround_music.play()
 		screen_timer = preload("res://scenes/other/timer_scene.tscn").instantiate()
 		add_child(screen_timer)
 		screen_total_gems = preload("res://scenes/other/gems_screen.tscn").instantiate()
 		add_child(screen_total_gems)
 	else:
-		$Background.stop()
 		if screen_timer != null:
 			screen_timer.queue_free()
 		if screen_total_gems != null:
@@ -65,6 +68,7 @@ func load_scene(scene_path) -> void:
 
 func load_credits() -> void:
 	load_scene("res://scenes/menus/credits.tscn")
+	menu_music.play()
 	
 
 func start_game() -> void:
