@@ -12,6 +12,7 @@ script = ExtResource("1_pynt8")
 stream = ExtResource("2_75du6")
 volume_db = -3.0
 pitch_scale = 1.2
+bus = &"SFX"
 
 [node name="Win" type="Control" parent="."]
 layout_mode = 3
