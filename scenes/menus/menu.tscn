@@ -279,10 +279,10 @@ theme = SubResource("Theme_npxxk")
 text = "Quit Game"
 
 [node name="Arena" parent="MenuMap" instance=ExtResource("10_mffp8")]
-offset_left = 235.0
-offset_top = 157.0
-offset_right = 318.0
-offset_bottom = 172.0
+offset_left = 236.0
+offset_top = 159.0
+offset_right = 319.0
+offset_bottom = 174.0
 text = "Arena Mode"
 
 [connection signal="pressed" from="MenuMap/StartGame" to="." method="_on_start_game_pressed"]

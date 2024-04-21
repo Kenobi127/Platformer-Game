@@ -577,7 +577,6 @@ position = Vector2(2, -16)
 sprite_frames = ExtResource("2_afu6y")
 animation = &"walk"
 autoplay = "idle"
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CollisionShape2D")
@@ -587,7 +586,6 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -12)
 shape = ExtResource("9_gjl70")
 

@@ -24,20 +24,17 @@ script = ExtResource("1_vbmkp")
 wait_time = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.3, 1, 1)
 position = Vector2(4.3052e-10, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h7ird")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1.03878e-07, -19.5)
 scale = Vector2(0.78355, 0.778154)
 shape = SubResource("RectangleShape2D_wvocs")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollectablePickupArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 

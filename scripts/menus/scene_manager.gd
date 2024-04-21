@@ -21,7 +21,7 @@ var total_gems = 0
 func _ready() -> void:
 	# Load the initial scene (menu scene)
 	load_scene("res://scenes/menus/menu.tscn")
-
+	
 	# Preload the pause menu
 	pause_menu = preload("res://scenes/menus/pause_screen.tscn").instantiate()
 	add_child(pause_menu)
@@ -84,6 +84,7 @@ func finish_level():
 	
 	if screen_timer != null:
 		screen_timer.stop_timer()
+		time_taken = screen_timer.return_timer_value()
 		screen_timer.queue_free()
 	if screen_total_gems != null:
 		screen_total_gems.queue_free()
