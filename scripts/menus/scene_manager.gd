@@ -39,9 +39,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	#return
-	if Input.is_action_just_pressed("debug"):
-		SceneManager.finish_level()
+	return
+	#if Input.is_action_just_pressed("debug"):
+		#SceneManager.finish_level()
 		#spawn_gem()
 
 func fade_in():
