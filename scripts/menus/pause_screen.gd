@@ -46,15 +46,11 @@ func _on_music_slider_value_changed(value):
 	music_bus_index = AudioServer.get_bus_index("Music")
 	var db = linear_to_db(value)
 	AudioServer.set_bus_volume_db(music_bus_index, db)
-	
-	
-
 
 func _on_sfx_slider_value_changed(value):
 	sfx_bus_index = AudioServer.get_bus_index("SFX")
 	var db = linear_to_db(value)
 	AudioServer.set_bus_volume_db(sfx_bus_index, db)
-	
 	
 
 func _on_music_slider_drag_started() -> void:

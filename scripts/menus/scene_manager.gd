@@ -1,7 +1,6 @@
 # SceneManager.gd
 extends Node
 
-
 @onready var gem_particles_scene = preload("res://scenes/other/gem_gpu_particles_2d.tscn")
 @onready var gem_scene = preload("res://scenes/other/gem.tscn")
 @onready var skeleton_scene = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn")
@@ -10,6 +9,7 @@ extends Node
 @onready var backround_music = $Background
 @onready var menu_music = $MenuMusic
 
+var start = true
 var current_scene = null
 var pause_menu = null
 var win_screen = null
@@ -18,9 +18,14 @@ var screen_total_gems = null
 var time_taken = 0
 var total_gems = 0
 
+signal faded_in
+signal faded_out
+
+
 func _ready() -> void:
 	# Load the initial scene (menu scene)
 	load_scene("res://scenes/menus/menu.tscn")
+	start = false
 	
 	# Preload the pause menu
 	pause_menu = preload("res://scenes/menus/pause_screen.tscn").instantiate()
@@ -38,7 +43,19 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug"):
 		SceneManager.finish_level()
 		#spawn_gem()
+
+func fade_in():
+	$ScreenCenter/ScreenFader/FadePlayer.play("fade_in")
+	await $ScreenCenter/ScreenFader/FadePlayer.animation_finished
+	emit_signal("faded_in")
 	
+# Wrapper function for performing fade out animation
+func fade_out():
+	$ScreenCenter/ScreenFader/FadePlayer.play("fade_out")
+	await $ScreenCenter/ScreenFader/FadePlayer.animation_finished
+	emit_signal("faded_out")
+
+
 func spawn_gem() -> void:
 	var gem = SceneManager.gem_scene.instantiate()
 	get_parent().add_child(gem)
@@ -46,6 +63,12 @@ func spawn_gem() -> void:
 
 
 func load_scene(scene_path) -> void:
+	if start == true:
+		fade_in()
+	else: 
+		fade_out()
+		await faded_out
+
 	# Unload the current scene if there is one
 	if current_scene != null:
 		current_scene.queue_free()
@@ -65,6 +88,10 @@ func load_scene(scene_path) -> void:
 			screen_timer.queue_free()
 		if screen_total_gems != null:
 			screen_total_gems.queue_free()
+	
+	fade_in()
+	await faded_in
+
 
 func load_credits() -> void:
 	load_scene("res://scenes/menus/credits.tscn")
@@ -75,6 +102,8 @@ func start_game() -> void:
 	load_scene("res://scenes/levels/Level 1/Tutorial_level.tscn")
 
 func quit_game() -> void:
+	fade_out()
+	await faded_out
 	get_tree().quit()
 
 

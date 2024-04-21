@@ -210,7 +210,7 @@ motion_scale = Vector2(0.03, 0)
 motion_mirroring = Vector2(512, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="MountainsBackground/FrontMountains"]
-position = Vector2(49, 29)
+position = Vector2(62, 36)
 texture = ExtResource("6_dr4q5")
 
 [node name="MenuMap" type="TileMap" parent="."]
