@@ -241,8 +241,8 @@ text = "almost there... "
 
 [node name="CreditText13" parent="Texts" instance=ExtResource("7_88tmb")]
 layout_mode = 1
-anchor_left = 157.757
-anchor_top = -5.57305
+anchor_left = 156.257
+anchor_top = -6.24805
 anchor_right = 156.257
 anchor_bottom = -6.24805
 offset_left = -8125.0

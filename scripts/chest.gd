@@ -22,7 +22,6 @@ func _on_timer_timeout() -> void:
 		if gem_num>1:
 			var rand_time = randf_range(0.3, 0.6)
 			$Timer.wait_time = rand_time
-			print(rand_time)
 			$Timer.start()
 
 

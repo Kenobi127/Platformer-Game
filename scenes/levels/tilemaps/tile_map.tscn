@@ -6,6 +6,7 @@
 tile_set = ExtResource("1_l0ijb")
 format = 2
 layer_0/name = "BDecoration2"
+layer_0/z_index = -2
 layer_1/name = "BDecorations1"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()

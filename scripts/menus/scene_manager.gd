@@ -23,9 +23,6 @@ signal faded_out
 
 
 func _ready() -> void:
-	if OS.get_name().to_lower().find("android") > -1 || OS.get_name().to_lower().find("iphone") > -1:
-		print("Running on a mobile platform")
-	
 	# Load the initial scene (menu scene)
 	load_scene("res://scenes/menus/menu.tscn")
 	start = false
@@ -100,8 +97,8 @@ func load_scene(scene_path) -> void:
 
 
 func load_credits() -> void:
-	load_scene("res://scenes/menus/credits.tscn")
 	music_menu.play()
+	load_scene("res://scenes/menus/credits.tscn")
 	
 
 func start_game() -> void:
