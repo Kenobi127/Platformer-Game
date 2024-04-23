@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ut4hxqgw3iys"]
+[gd_scene load_steps=12 format=3 uid="uid://ut4hxqgw3iys"]
 
 [ext_resource type="PackedScene" uid="uid://j6b1e4kmftwp" path="res://scenes/character bodies/enemies/staticspike.tscn" id="3_c861q"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_tfd4b"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_236wj"]
+[ext_resource type="PackedScene" uid="uid://qwisf2yjp274" path="res://scenes/other/chest.tscn" id="4_pe8fg"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_o7vye"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_1mrfq"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_mpyvf"]
@@ -21,9 +22,6 @@ process_mode = 1
 
 [node name="Moving Platforms" type="Node2D" parent="."]
 
-[node name="Flagpole" parent="Moving Platforms" instance=ExtResource("6_mpyvf")]
-position = Vector2(4402, -88)
-
 [node name="MovingPlatform" parent="Moving Platforms" instance=ExtResource("8_hn8f8")]
 position = Vector2(3027, 71)
 curve = SubResource("Curve2D_6tnwg")
@@ -39,10 +37,10 @@ position = Vector2(1086, 133)
 position = Vector2(1270, 133)
 
 [node name="Skeleton3" parent="Enemies" instance=ExtResource("8_0yn4d")]
-position = Vector2(2684, -34)
+position = Vector2(2695.74, -34)
 
 [node name="Skeleton4" parent="Enemies" instance=ExtResource("8_0yn4d")]
-position = Vector2(2658, -35)
+position = Vector2(2635.55, -33.5478)
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -63,6 +61,16 @@ position = Vector2(879, 135)
 
 [node name="StaticSpike6" parent="Spikes" instance=ExtResource("3_c861q")]
 position = Vector2(887, 135)
+
+[node name="Chests" type="Node2D" parent="."]
+
+[node name="Chest" parent="Chests" instance=ExtResource("4_pe8fg")]
+position = Vector2(2668.11, -33.5478)
+
+[node name="Other" type="Node2D" parent="."]
+
+[node name="Flagpole" parent="Other" instance=ExtResource("6_mpyvf")]
+position = Vector2(4402, -88)
 
 [node name="TileMap" parent="." instance=ExtResource("3_tfd4b")]
 scale = Vector2(0.7, 0.7)
@@ -230,3 +238,16 @@ offset_right = -8016.0
 offset_bottom = 282.922
 theme_override_font_sizes/normal_font_size = 8
 text = "almost there... "
+
+[node name="CreditText13" parent="Texts" instance=ExtResource("7_88tmb")]
+layout_mode = 1
+anchor_left = 157.757
+anchor_top = -5.57305
+anchor_right = 156.257
+anchor_bottom = -6.24805
+offset_left = -8125.0
+offset_top = 242.922
+offset_right = -8016.0
+offset_bottom = 282.922
+theme_override_font_sizes/normal_font_size = 8
+text = "oh, a chest!"

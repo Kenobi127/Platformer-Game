@@ -6,8 +6,8 @@ extends Node
 @onready var skeleton_scene = preload("res://scenes/character bodies/enemies/skeleton1_0.tscn")
 
 @onready var button_sound = $ButtonPressed
-@onready var backround_music = $Background
-@onready var menu_music = $MenuMusic
+@onready var music_level1 = $MusicLevel1
+@onready var music_menu = $MenuMusic
 
 var start = true
 var current_scene = null
@@ -23,6 +23,9 @@ signal faded_out
 
 
 func _ready() -> void:
+	if OS.get_name().to_lower().find("android") > -1 || OS.get_name().to_lower().find("iphone") > -1:
+		print("Running on a mobile platform")
+	
 	# Load the initial scene (menu scene)
 	load_scene("res://scenes/menus/menu.tscn")
 	start = false
@@ -72,30 +75,33 @@ func load_scene(scene_path) -> void:
 	# Unload the current scene if there is one
 	if current_scene != null:
 		current_scene.queue_free()
+	if screen_timer != null:
+		screen_timer.queue_free()
+	if screen_total_gems != null:
+		screen_total_gems.queue_free()
+	
 	# Load the new scene
 	current_scene = load(scene_path).instantiate()
 	add_child(current_scene)
 	
+	
 	#timer and gems for each level
 	if current_scene.name != "Menu" && current_scene.name != "CreditsCanvas":
-		backround_music.play()
+		music_menu.stop()
+		music_level1.play()
 		screen_timer = preload("res://scenes/other/timer_scene.tscn").instantiate()
 		add_child(screen_timer)
 		screen_total_gems = preload("res://scenes/other/gems_screen.tscn").instantiate()
 		add_child(screen_total_gems)
 	else:
-		if screen_timer != null:
-			screen_timer.queue_free()
-		if screen_total_gems != null:
-			screen_total_gems.queue_free()
-	
+		music_level1.stop()
 	fade_in()
 	await faded_in
 
 
 func load_credits() -> void:
 	load_scene("res://scenes/menus/credits.tscn")
-	menu_music.play()
+	music_menu.play()
 	
 
 func start_game() -> void:

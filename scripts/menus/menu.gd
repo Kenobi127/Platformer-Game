@@ -2,12 +2,12 @@ extends Node2D
 
 func _ready() -> void:
 	SceneManager.total_gems = 0
-	SceneManager.menu_music.play()
+	SceneManager.music_menu.play()
 
 func _on_start_game_pressed():
 	# Call the start_game function in the scene manager
 	SceneManager.button_sound.play()
-	SceneManager.menu_music.stop()
+	SceneManager.music_menu.stop()
 	SceneManager.start_game()
 
 func _on_credits_view_pressed():
@@ -23,5 +23,5 @@ func _on_quit_game_pressed():
 
 func _on_arena_pressed() -> void:
 	SceneManager.button_sound.play()
-	SceneManager.menu_music.stop()
+	SceneManager.music_menu.stop()
 	SceneManager.load_scene("res://scenes/levels/testing mechanics/testing_mechanics.tscn")

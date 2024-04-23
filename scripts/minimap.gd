@@ -30,6 +30,11 @@ func _ready():
 			for enemy in node.get_children():
 				enemy.connect("position_changed", _on_enemy_position_changed)
 				enemy.connect("destroyed", _on_enemy_destroyed)
+		
+		if node.name == "Other":					#read the enemies
+			for other in node.get_children():
+				var other_dup = other.duplicate()
+				sub_viewport.add_child(other_dup)
 
 func _process(delta):
 	$SubViewportContainer/SubViewport/Camera2D.position = player.position
