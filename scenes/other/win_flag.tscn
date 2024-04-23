@@ -9,8 +9,7 @@ size = Vector2(16.25, 60)
 [node name="Flagpole" type="Area2D"]
 scale = Vector2(0.8, 0.8)
 disable_mode = 2
-collision_layer = 255
-collision_mask = 255
+collision_mask = 2
 script = ExtResource("1_jrrba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

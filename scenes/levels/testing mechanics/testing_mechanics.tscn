@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs2ynknivuqov"]
+[gd_scene load_steps=11 format=3 uid="uid://cs2ynknivuqov"]
 
 [ext_resource type="Script" path="res://scripts/testing_mechanics.gd" id="1_3fuar"]
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="1_rpmpf"]
+[ext_resource type="PackedScene" uid="uid://qwisf2yjp274" path="res://scenes/other/chest.tscn" id="2_dosm0"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="2_g27us"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="3_4vhrx"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="3_b2hi8"]
@@ -17,6 +18,9 @@ point_count = 6
 
 [node name="Testing Mechanics" type="Node2D"]
 script = ExtResource("1_3fuar")
+
+[node name="Chest" parent="." instance=ExtResource("2_dosm0")]
+position = Vector2(-16, 128)
 
 [node name="Enemies" type="Node2D" parent="."]
 

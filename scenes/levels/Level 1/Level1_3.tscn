@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgwmputi74r4m"]
+[gd_scene load_steps=22 format=3 uid="uid://dgwmputi74r4m"]
 
 [ext_resource type="PackedScene" uid="uid://cw1dm3jv5cq12" path="res://scenes/levels/tilemaps/tile_map.tscn" id="3_pjtbb"]
 [ext_resource type="PackedScene" uid="uid://dfuk0f80uair1" path="res://scenes/backgrounds/paralax_clouds.tscn" id="4_efxjs"]
+[ext_resource type="PackedScene" uid="uid://qwisf2yjp274" path="res://scenes/other/chest.tscn" id="5_fdvma"]
 [ext_resource type="PackedScene" uid="uid://c1s8mftritkeq" path="res://scenes/backgrounds/paralax_mountains.tscn" id="5_nqx5h"]
 [ext_resource type="PackedScene" uid="uid://b0iwhan3emqtq" path="res://scenes/character bodies/player/Player.tscn" id="6_4uh11"]
 [ext_resource type="PackedScene" uid="uid://dcbfolw1aiu0o" path="res://scenes/other/win_flag.tscn" id="6_bfybs"]
@@ -126,7 +127,6 @@ position = Vector2(1282, -179)
 [node name="StaticSpike11" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(2303, -344)
 rotation = 1.74533
-scale = Vector2(0.5, 0.5)
 
 [node name="StaticSpike12" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(1954, -112)
@@ -156,7 +156,6 @@ rotation = 1.5708
 [node name="StaticSpike20" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(3092, -296)
 rotation = -0.349066
-scale = Vector2(0.5, 0.5)
 
 [node name="StaticSpike21" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(3103, -298)
@@ -164,7 +163,6 @@ position = Vector2(3103, -298)
 [node name="StaticSpike22" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(3114, -297)
 rotation = 0.174533
-scale = Vector2(0.5, 0.5)
 
 [node name="StaticSpike23" parent="Spikes" instance=ExtResource("8_m8yyf")]
 position = Vector2(3269, 101)
@@ -363,6 +361,15 @@ position = Vector2(4395, -308)
 [node name="Skeleton25" parent="Enemies" instance=ExtResource("7_143kd")]
 position = Vector2(681, -107)
 
+[node name="Other" type="Node2D" parent="."]
+
+[node name="Flagpole" parent="Other" instance=ExtResource("6_bfybs")]
+z_index = -3
+position = Vector2(4512, -302)
+
+[node name="Chest" parent="Other" instance=ExtResource("5_fdvma")]
+position = Vector2(192, -100.5)
+
 [node name="TileMap" parent="." instance=ExtResource("3_pjtbb")]
 scale = Vector2(0.7, 0.7)
 layer_0/tile_data = PackedInt32Array(-1834606, 720897, 14, -1900142, 720897, 14, -1965678, 720897, 14, -2031214, 720897, 14, -2096750, 720897, 14, -1769070, 720897, 14, -1769069, 1048577, 14, -1834605, 1048577, 14, -1900141, 1048577, 14, -1965677, 1048577, 14, -2031213, 1048577, 14, -2096749, 1048577, 14, -1769068, 1048577, 14, -1834604, 1048577, 14, -1900140, 1048577, 14, -1965676, 1048577, 14, -2031212, 1048577, 14, -2096748, 1048577, 14, -2031211, 1048577, 14, -1965675, 1048577, 14, -1900139, 1048577, 14, -1834603, 1048577, 14, -1769067, 65536, 0, -2096747, 1048577, 14, -1769066, 65536, 0, -2096746, 1048577, 14, -2031210, 1048577, 14, -1965674, 1048577, 14, -1900138, 1048577, 14, -1834602, 1048577, 14, -2162282, 1048577, 14, -2162283, 1048577, 14, -2162284, 1048577, 14, -2162285, 1048577, 14, -2162286, 1048577, 14, -1769065, 65536, 0, -1769064, 65536, 0, -1769063, 65536, 0, -1769062, 65536, 0, -1769061, 65536, 0, -1769060, 65536, 0, -1769059, 65536, 0, -1769058, 65536, 0, -1769057, 65536, 0, -1769056, 65536, 2, -2227808, 65536, 2, -2162272, 65536, 2, -2096736, 65536, 2, -2031200, 65536, 2, -1965664, 65536, 2, -1900128, 65536, 2, -1834592, 65536, 2, -2227822, 65536, 2, -2227821, 65536, 2, -2227820, 65536, 2, -2227819, 65536, 2, -2227818, 65536, 2, -2227817, 65536, 2, -2227816, 65536, 2, -2227815, 65536, 2, -2227814, 65536, 2, -2227813, 65536, 2, -2227812, 65536, 2, -2227811, 65536, 2, -2227810, 65536, 2, -2227809, 65536, 2)
@@ -378,7 +385,3 @@ transform = Transform2D(1, 0, 0, 1, 64, 40)
 
 [node name="Player" parent="." instance=ExtResource("6_4uh11")]
 position = Vector2(173, 115)
-
-[node name="Flagpole" parent="." instance=ExtResource("6_bfybs")]
-z_index = -3
-position = Vector2(4512, -302)
